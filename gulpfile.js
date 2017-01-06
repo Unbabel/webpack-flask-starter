@@ -31,6 +31,8 @@ var targetMode = options.has('target') && ['dev', 'prod'].indexOf(options.get('t
 var targetIsDev = targetMode === 'dev';
 var targetIsProd = targetMode === 'prod';
 
+var freshStart = (targetIsProd || options.has('freshstart'));
+
 console.log('targetMode', targetMode);
 
 
@@ -113,7 +115,7 @@ gulp.task('compile-css', function (cb) {
     targetIsDev ? sourcemaps.init() : empty(),
 
     // Push changed files to pipe
-    targetIsDev ? lessChanged({
+    targetIsDev && !freshStart ? lessChanged({
       getOutputFileName: function (filePath) {
         // Point to future destination path for proper change detection
         var localPath = filePath.replace(path.resolve(lessSourceDir), '').replace('less', 'css');
