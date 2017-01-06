@@ -1,0 +1,36 @@
+{
+  "name": "unbabel-frontend-starter",
+  "version": "1.0.0",
+  "description": "Unbabel Starter for Front-end",
+  "main": "gulpfile.js",
+  "author": "João Sardinha",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Unbabel/frontend-starter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Unbabel/frontend-starter/issues",
+    "email": "community@dev.unbabel.com"
+  },
+  "dependencies": {
+    "browser-sync": "^2.18.5",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-clean-css": "^2.3.2",
+    "gulp-debug": "^3.0.0",
+    "gulp-include": "^2.3.1",
+    "gulp-less": "^3.3.0",
+    "gulp-less-changed": "^1.2.2",
+    "gulp-modernizr": "^1.0.0-alpha",
+    "gulp-options": "^1.1.1",
+    "gulp-sourcemaps": "^1.9.1",
+    "gulp-util": "^3.0.8",
+    "pump": "^1.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "bower install && gulp"
+  }
+}

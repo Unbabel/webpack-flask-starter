@@ -1,0 +1,21 @@
+{
+  "name": "unbabel-frontend-starter",
+  "description": "Unbabel Starter for Front-end",
+  "main": "gulpfile.js",
+  "authors": [
+    "João Sardinha"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/Unbabel/frontend-starter",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize-css": "^5.0.0"
+  }
+}
