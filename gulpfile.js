@@ -2,10 +2,6 @@
  *
  * Gulp toolset for Unbabel
  *
- * Compiles Less styles
- *
- * Commands:
- *
  */
 
 
@@ -15,6 +11,7 @@ var debug = require('gulp-debug');
 var path = require('path');
 var pump = require('pump');
 var options = require('gulp-options');
+var fs = require('fs');
 var util = require('gulp-util');
 var empty = util.noop;
 var browserSync = require('browser-sync').create();
@@ -24,6 +21,9 @@ var browserSync = require('browser-sync').create();
  * Target Mode
  *
  * Development or Production
+ *
+ * dev || prod
+ * --freshstart means that files are compiled regardless if they have or not changed
  */
 
 var defaultTarget = 'dev';
@@ -148,6 +148,39 @@ gulp.task('watch-css', ['compile-css'], function () {
 
 
 /*
+ * Webpack
+ */
+
+var webpack = require('webpack');
+
+var webpackConfigFileName = options.has('webpack') ? options.get('webpack') : 'default';
+var webpackConfigFilePath = './webpack.' + webpackConfigFileName + '.config.js';
+var webpackConfig = require(webpackConfigFilePath);
+var webpackConfigExists = fs.existsSync(webpackConfigFilePath);
+
+if ( webpackConfigExists ) {
+  // Webpack
+  gulp.task('build-webpack', function (cb) {
+    webpack(webpackConfig, function (err, stats) {
+      if (err) throw new util.PluginError("webpack", err);
+      stats.toString({
+        colors: true,
+        chunks: false
+      }).split('\n').map(function (line) {
+        util.log(util.colors.blue("[webpack]"), line);
+      });
+      cb();
+    });
+  });
+
+  gulp.task('watch-webpack', ['build-webpack'], function (done) {
+      browserSync.reload();
+      done();
+  });
+}
+
+
+/*
  * BrowserSync
  */
 
@@ -158,7 +191,7 @@ var browserSyncOptions = {
 }
 
 // Serve the project using browserSync
-gulp.task('serve', function () {
+gulp.task('serve', ['default'], function () {
 
   // Start browserSync
   browserSync.init(browserSyncOptions);
@@ -166,8 +199,12 @@ gulp.task('serve', function () {
   // Watch less for changes
   gulp.watch(stylesPathForWatch, ['compile-css']);
 
-  // Watch templates for changes
-  //gulp.watch(jsPathForWatch).on('change', browserSync.reload);
+  // Watch webpack for changes
+  if ( webpackConfigExists ) {
+    gulp.watch(webpackConfig.context + '/**/*.js', ['watch-webpack']);
+  }
+
+  // Watch files for changes
   gulp.watch(templatesPathForWatch).on('change', browserSync.reload);
 });
 
@@ -175,4 +212,11 @@ gulp.task('serve', function () {
 /*
  * Gulp Default
  */
-gulp.task('default', ['compile-css']);
+
+var defaultTasks = ['compile-css'];
+
+if ( webpackConfigExists ) {
+  defaultTasks.push('build-webpack');
+}
+
+gulp.task('default', defaultTasks);
