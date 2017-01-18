@@ -63,9 +63,15 @@ Each folder usually has a `_all.scss` file that imports all files within the fol
 
 Talk about less and file naming conventions. Files starting with underscore
 
+### Style Guide
+
+Recommended style guide: [`airbnb/css`](https://github.com/airbnb/css)
+
 ## JavaScript
 
 Talk about code style, filenames and tests
+
+Recommended style guide: [`airbnb/javascript `](https://github.com/airbnb/javascript)
 
 ### Module approach
 
