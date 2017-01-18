@@ -115,7 +115,7 @@ gulp.task('compile-css', function (cb) {
     gulp.src(styleSourcePath),
 
     // Init sourcemaps
-    targetIsDev ? sourcemaps.init() : empty(),
+    sourcemaps.init(),
 
     // Know which files are flowing down the pipe
     debug(),
@@ -130,7 +130,7 @@ gulp.task('compile-css', function (cb) {
     targetIsProd ? cleanCSS(cleanCSSOptions, cleanCSSCallback) : empty(),
 
     // Write the sourcemaps
-    targetIsDev ? sourcemaps.write('.') : empty(),
+    sourcemaps.write('.'),
 
     // Save files
     gulp.dest(styleDestination),
