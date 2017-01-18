@@ -1,5 +1,6 @@
 @import '_dependencies';
 @import '_settings';
-@import 'mixins/_bootstrap';
-@import 'typography/_bootstrap';
-@import 'views/_bootstrap';
+@import 'utils/_all';
+@import 'typography/_all';
+@import 'base/_all';
+@import 'views/_all';
