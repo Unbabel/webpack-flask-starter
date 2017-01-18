@@ -2,19 +2,18 @@
  * Button
  */
 @mixin button {
-  border: 2px solid;
+  border: .125rem solid;
   background-color: transparent;
   border-radius: 3px;
   padding: 4px 10px;
   cursor: pointer;
-
-  @at-root a#{&} {
-    color: inherit;
-    text-decoration: none;
-  }
 }
 
 .button,
 button {
   @include button();
+}
+a.button {
+  color: inherit;
+  text-decoration: none;
 }
