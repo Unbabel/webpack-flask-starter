@@ -147,10 +147,9 @@ gulp.task('watch-css', ['compile-css'], () => {
 
 const webpack = require('webpack');
 
-const webpackConfigFileName = options.has('webpack') ? options.get('webpack') : 'default';
-const webpackConfigFilePath = `./webpack.${webpackConfigFileName}.config.js`;
-const webpackConfig = require(webpackConfigFilePath);
-const webpackConfigExists = fs.existsSync(webpackConfigFilePath);
+const webpackConfig = require('./webpack.config.js');
+
+const webpackConfigExists = webpackConfig.entry;
 
 if (webpackConfigExists) {
   // Webpack
