@@ -39,6 +39,7 @@
     "gulp-options": "^1.1.1",
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.4.0",
+    "gulp-util": "^3.0.8",
     "pump": "^1.0.2",
     "webpack": "^1.14.0"
   }
