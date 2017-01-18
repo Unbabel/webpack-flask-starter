@@ -13,40 +13,31 @@
     "url": "https://github.com/Unbabel/frontend-starter/issues",
     "email": "community@dev.unbabel.com"
   },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "bower install && gulp --freshstart"
+  },
   "dependencies": {
+    "jquery": "^3.1.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.21.0",
     "babel-loader": "^6.2.10",
     "babel-preset-es2015": "^6.18.0",
-    "browser-sync": "^2.18.5",
+    "browser-sync": "^2.18.6",
+    "eslint": "^3.13.1",
+    "eslint-config-airbnb": "^14.0.0",
+    "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^3.0.2",
     "eslint-plugin-react": "^6.9.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-clean-css": "^2.3.2",
     "gulp-debug": "^3.0.0",
-    "gulp-include": "^2.3.1",
-    "gulp-less": "^3.3.0",
-    "gulp-less-changed": "^1.2.2",
-    "gulp-modernizr": "^1.0.0-alpha",
     "gulp-options": "^1.1.1",
     "gulp-sass": "^3.1.0",
-    "gulp-sass-graph": "^1.0.0",
-    "gulp-sourcemaps": "^1.9.1",
-    "gulp-util": "^3.0.8",
-    "gulp-webpack": "^1.5.0",
-    "jquery": "^3.1.1",
-    "karma": "^1.3.0",
+    "gulp-sourcemaps": "^2.4.0",
     "pump": "^1.0.2",
     "webpack": "^1.14.0"
-  },
-  "devDependencies": {
-    "babel-core": "^6.21.0",
-    "eslint": "^3.13.0",
-    "eslint-config-airbnb": "^14.0.0",
-    "eslint-plugin-import": "^2.2.0",
-    "webpack": "^1.14.0"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "bower install && gulp --freshstart"
   }
 }
