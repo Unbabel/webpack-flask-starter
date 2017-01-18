@@ -88,6 +88,8 @@ Running `yarn` will install all dependencies and compile the assets once.
 
 It's a good idea to run `yarn` when changing branches to make sure everything is updated.
 
+You may run `yarn && gulp serve` to install all requirements and open the browser to see something working.
+
 **While developing**
 
 Run `gulp serve`. This will compile all assets once, launch browsersync in the browser. It then watches for css and javascript changes. When css changes, it gets injected. When JavaScript changes, the page reloads.
