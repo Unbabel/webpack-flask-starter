@@ -99,3 +99,7 @@ You may run `yarn && gulp serve` to install all requirements and open the browse
 **While developing**
 
 Run `gulp serve`. This will compile all assets once, launch browsersync in the browser. It then watches for css and javascript changes. When css changes, it gets injected. When JavaScript changes, the page reloads.
+
+## Generating production-ready assets
+
+Run `gulp --target=prod` to generate minified assets ready to production
