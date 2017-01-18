@@ -15,7 +15,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "bower install && gulp --freshstart"
+    "postinstall": "bower install && gulp --freshstart",
+    "csscomb": "./node_modules/csscomb/bin/csscomb src/scss"
   },
   "dependencies": {
     "jquery": "^3.1.1"
@@ -25,6 +26,7 @@
     "babel-loader": "^6.2.10",
     "babel-preset-es2015": "^6.18.0",
     "browser-sync": "^2.18.6",
+    "csscomb": "^3.1.7",
     "eslint": "^3.13.1",
     "eslint-config-airbnb": "^14.0.0",
     "eslint-plugin-import": "^2.2.0",
