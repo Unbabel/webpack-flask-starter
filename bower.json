@@ -1,7 +1,6 @@
 {
   "name": "unbabel-frontend-starter",
   "description": "Unbabel Starter for Front-end",
-  "main": "gulpfile.js",
   "authors": [
     "João Sardinha"
   ],
