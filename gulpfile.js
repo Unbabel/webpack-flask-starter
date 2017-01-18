@@ -6,15 +6,17 @@
 
 
 // Common dependencies
-var gulp = require('gulp');
-var debug = require('gulp-debug');
-var path = require('path');
-var pump = require('pump');
-var options = require('gulp-options');
-var fs = require('fs');
-var util = require('gulp-util');
-var empty = util.noop;
-var browserSync = require('browser-sync').create();
+const gulp = require('gulp');
+const debug = require('gulp-debug');
+const path = require('path');
+const pump = require('pump');
+const options = require('gulp-options');
+const fs = require('fs');
+const util = require('gulp-util');
+const browserSync = require('browser-sync').create();
+
+// Aliases
+const empty = util.noop;
 
 
 /*
@@ -26,78 +28,70 @@ var browserSync = require('browser-sync').create();
  * --freshstart means that files are compiled regardless if they have or not changed
  */
 
-var defaultTarget = 'dev';
-var targetMode = options.has('target') && ['dev', 'prod'].indexOf(options.get('target')) !== -1 ? options.get('target') : defaultTarget;
-var targetIsDev = targetMode === 'dev';
-var targetIsProd = targetMode === 'prod';
+const defaultTarget = 'dev';
+const targetMode = options.has('target') && ['dev', 'prod'].indexOf(options.get('target')) !== -1 ? options.get('target') : defaultTarget;
+const targetIsDev = targetMode === 'dev';
+const targetIsProd = targetMode === 'prod';
 
-var freshStart = (targetIsProd || options.has('freshstart'));
-
-console.log('targetMode', targetMode);
+const freshStart = (targetIsProd || options.has('freshstart'));
 
 
 /*
  * Global vars
  */
 
-var rootDir = '.';
-var srcDir = rootDir + '/src';
-var distDir = rootDir + '/dist';
-var templatesDir = rootDir + '/';
+const rootDir = '.';
+const srcDir = rootDir + '/src';
+const distDir = rootDir + '/dist';
+const templatesDir = rootDir + '/';
 
 
 /*
  * Paths
  */
 
-var scssPathForWatch = [
-   '/scss/**/*.scss',
-].map(function (file) {
-  return '' + srcDir + file;
-});
+const scssPathForWatch = [
+  '/scss/**/*.scss',
+].map(file => `${srcDir}${file}`);
 
-var stylesPathForWatch = [].concat(scssPathForWatch);
+const stylesPathForWatch = [].concat(scssPathForWatch);
 
-var templatesPathForWatch = [
+const templatesPathForWatch = [
   '/**/*.html',
-].map(function (file) {
-  return '' + templatesDir + file;
-});
+].map(file => `${templatesDir}${file}`);
 
 
 /*
  * Style processing
  */
 
-var sass = require('gulp-sass');
+const sass = require('gulp-sass');
 
-var styleSourcePath = [
-   '/scss/**/!(_*).scss',
-].map(function (file) {
-  return '' + srcDir + file;
-});
+const styleSourcePath = [
+  '/scss/**/!(_*).scss',
+].map(file => `${srcDir}${file}`);
 
-var styleLookupPaths = [
+const styleLookupPaths = [
   path.join(__dirname, 'scss'),
   path.join(__dirname, 'bower_components'),
 ];
 
-var stylePipeOptions = {
+const stylePipeOptions = {
   paths: styleLookupPaths,
 };
 
-var styleSourceDir = srcDir + '/scss';
-var styleDestination = distDir + '/css';
+const styleSourceDir = `${srcDir}/scss`;
+const styleDestination = `${distDir}/css`;
 
 // clean-css options https://github.com/jakubpawlowicz/clean-css
-var cleanCSSOptions = {
+const cleanCSSOptions = {
   debug: true,
   compatibility: 'ie8',
   processImport: true,
-  processImportFrom: ['local']
+  processImportFrom: ['local'],
 };
 
-var cleanCSSCallback = function(details) {
+const cleanCSSCallback = (details) => {
   console.log(
     'CleanCSS took %s seconds to save %s% from %s',
     (details.stats.timeSpent / 1000),
@@ -106,11 +100,11 @@ var cleanCSSCallback = function(details) {
 };
 
 // Post processing
-var sourcemaps = require('gulp-sourcemaps');
-var autoprefixer = require('gulp-autoprefixer');
-var cleanCSS = require('gulp-clean-css');
+const sourcemaps = require('gulp-sourcemaps');
+const autoprefixer = require('gulp-autoprefixer');
+const cleanCSS = require('gulp-clean-css');
 
-gulp.task('compile-css', function (cb) {
+gulp.task('compile-css', (cb) => {
   pump([
     gulp.src(styleSourcePath),
 
@@ -142,7 +136,7 @@ gulp.task('compile-css', function (cb) {
   ], cb);
 });
 
-gulp.task('watch-css', ['compile-css'], function () {
+gulp.task('watch-css', ['compile-css'], () => {
   gulp.watch(stylesPathForWatch, ['compile-css']);
 });
 
@@ -151,31 +145,29 @@ gulp.task('watch-css', ['compile-css'], function () {
  * Webpack
  */
 
-var webpack = require('webpack');
+const webpack = require('webpack');
 
-var webpackConfigFileName = options.has('webpack') ? options.get('webpack') : 'default';
-var webpackConfigFilePath = './webpack.' + webpackConfigFileName + '.config.js';
-var webpackConfig = require(webpackConfigFilePath);
-var webpackConfigExists = fs.existsSync(webpackConfigFilePath);
+const webpackConfigFileName = options.has('webpack') ? options.get('webpack') : 'default';
+const webpackConfigFilePath = `./webpack.${webpackConfigFileName}.config.js`;
+const webpackConfig = require(webpackConfigFilePath);
+const webpackConfigExists = fs.existsSync(webpackConfigFilePath);
 
-if ( webpackConfigExists ) {
+if (webpackConfigExists) {
   // Webpack
-  gulp.task('build-webpack', function (cb) {
-    webpack(webpackConfig, function (err, stats) {
-      if (err) throw new util.PluginError("webpack", err);
+  gulp.task('build-webpack', (cb) => {
+    webpack(webpackConfig, (err, stats) => {
+      if (err) throw new util.PluginError('webpack', err);
       stats.toString({
         colors: true,
-        chunks: false
-      }).split('\n').map(function (line) {
-        util.log(util.colors.blue("[webpack]"), line);
-      });
+        chunks: false,
+      }).split('\n').map(line => util.log(util.colors.blue('[webpack]'), line));
       cb();
     });
   });
 
-  gulp.task('watch-webpack', ['build-webpack'], function (done) {
-      browserSync.reload();
-      done();
+  gulp.task('watch-webpack', ['build-webpack'], (done) => {
+    browserSync.reload();
+    done();
   });
 }
 
@@ -184,15 +176,14 @@ if ( webpackConfigExists ) {
  * BrowserSync
  */
 
-var browserSyncOptions = {
+const browserSyncOptions = {
   server: {
-    baseDir: rootDir + '/'
-  }
-}
+    baseDir: `${rootDir}/`,
+  },
+};
 
 // Serve the project using browserSync
-gulp.task('serve', ['default'], function () {
-
+gulp.task('serve', ['default'], () => {
   // Start browserSync
   browserSync.init(browserSyncOptions);
 
@@ -200,8 +191,8 @@ gulp.task('serve', ['default'], function () {
   gulp.watch(stylesPathForWatch, ['compile-css']);
 
   // Watch webpack for changes
-  if ( webpackConfigExists ) {
-    gulp.watch(webpackConfig.context + '/**/*.js', ['watch-webpack']);
+  if (webpackConfigExists) {
+    gulp.watch(`${webpackConfig.context}/**/*.js`, ['watch-webpack']);
   }
 
   // Watch files for changes
@@ -213,9 +204,9 @@ gulp.task('serve', ['default'], function () {
  * Gulp Default
  */
 
-var defaultTasks = ['compile-css'];
+const defaultTasks = ['compile-css'];
 
-if ( webpackConfigExists ) {
+if (webpackConfigExists) {
   defaultTasks.push('build-webpack');
 }
 
