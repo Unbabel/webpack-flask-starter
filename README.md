@@ -103,3 +103,11 @@ Run `gulp serve`. This will compile all assets once, launch browsersync in the b
 ## Generating production-ready assets
 
 Run `gulp --target=prod` to generate minified assets ready to production
+
+## Adding Bootstrap
+
+Run `yarn add bootstrap@4.0.0-alpha.6`
+
+Add `@import 'node_modules/bootstrap/scss/bootstrap';` to `src/scss/_dependencies.scss`
+
+All bootstrap css elements are now available
