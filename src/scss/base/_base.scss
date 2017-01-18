@@ -1,0 +1,40 @@
+/*
+ * Base Styles
+ *
+ * Here you can customize the base
+ * HTML elements, such as lists, headings, paragraphs,
+ * images, quotes, etc.
+ *
+ * This file should set the overall mood of your base HTML elements styles.
+ */
+
+html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: inherit;
+}
+
+/*
+ * Blockquotes
+ */
+blockquote,
+q {
+  quotes: '' '';
+
+  &:after,
+  &:before {
+    content: '';
+  }
+}
+
+/*
+ * Tables
+ */
+table {
+  width: 100%;
+}

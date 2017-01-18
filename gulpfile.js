@@ -50,13 +50,13 @@ var templatesDir = rootDir + '/';
  * Paths
  */
 
-var lessPathForWatch = [
-   '/less/**/*.less',
+var scssPathForWatch = [
+   '/scss/**/*.scss',
 ].map(function (file) {
   return '' + srcDir + file;
 });
 
-var stylesPathForWatch = [].concat(lessPathForWatch);
+var stylesPathForWatch = [].concat(scssPathForWatch);
 
 var templatesPathForWatch = [
   '/**/*.html',
@@ -69,26 +69,25 @@ var templatesPathForWatch = [
  * Style processing
  */
 
-var less = require('gulp-less');
-var lessChanged = require('gulp-less-changed');
+var sass = require('gulp-sass');
 
-var lessSourcePath = [
-   '/less/**/!(_*).less',
+var styleSourcePath = [
+   '/scss/**/!(_*).scss',
 ].map(function (file) {
   return '' + srcDir + file;
 });
 
-var lessLookupPaths = [
-  path.join(__dirname, 'less'),
+var styleLookupPaths = [
+  path.join(__dirname, 'scss'),
   path.join(__dirname, 'bower_components'),
 ];
 
-var lessPipeOptions = {
-  paths: lessLookupPaths,
+var stylePipeOptions = {
+  paths: styleLookupPaths,
 };
 
-var lessSourceDir = srcDir + '/less';
-var lessDestination = distDir + '/css';
+var styleSourceDir = srcDir + '/scss';
+var styleDestination = distDir + '/css';
 
 // clean-css options https://github.com/jakubpawlowicz/clean-css
 var cleanCSSOptions = {
@@ -99,7 +98,11 @@ var cleanCSSOptions = {
 };
 
 var cleanCSSCallback = function(details) {
-  console.log('CleanCSS took %s seconds to save %s% from %s', (details.stats.timeSpent / 1000), Math.round(details.stats.efficiency * 100), details.name);
+  console.log(
+    'CleanCSS took %s seconds to save %s% from %s',
+    (details.stats.timeSpent / 1000),
+    Math.round(details.stats.efficiency * 100),
+    details.name);
 };
 
 // Post processing
@@ -109,26 +112,16 @@ var cleanCSS = require('gulp-clean-css');
 
 gulp.task('compile-css', function (cb) {
   pump([
-    gulp.src(lessSourcePath),
+    gulp.src(styleSourcePath),
 
     // Init sourcemaps
     targetIsDev ? sourcemaps.init() : empty(),
-
-    // Push changed files to pipe
-    targetIsDev && !freshStart ? lessChanged({
-      getOutputFileName: function (filePath) {
-        // Point to future destination path for proper change detection
-        var localPath = filePath.replace(path.resolve(lessSourceDir), '').replace('less', 'css');
-        return '' + lessDestination + localPath;
-      },
-      paths: lessLookupPaths,
-    }) : empty(),
 
     // Know which files are flowing down the pipe
     debug(),
 
     // Compile less files using specified options
-    less(lessPipeOptions),
+    sass(stylePipeOptions),
 
     // Run autoprefixer
     autoprefixer(),
@@ -140,7 +133,7 @@ gulp.task('compile-css', function (cb) {
     targetIsDev ? sourcemaps.write('.') : empty(),
 
     // Save files
-    gulp.dest(lessDestination),
+    gulp.dest(styleDestination),
 
     // Stream changed files to browsersync
     browserSync.stream({
@@ -149,8 +142,8 @@ gulp.task('compile-css', function (cb) {
   ], cb);
 });
 
-gulp.task('watch-less', ['compile-css'], function () {
-  gulp.watch(lessPathForWatch, ['compile-css']);
+gulp.task('watch-css', ['compile-css'], function () {
+  gulp.watch(stylesPathForWatch, ['compile-css']);
 });
 
 
@@ -171,7 +164,7 @@ gulp.task('serve', function () {
   browserSync.init(browserSyncOptions);
 
   // Watch less for changes
-  gulp.watch(lessPathForWatch, ['compile-css']);
+  gulp.watch(stylesPathForWatch, ['compile-css']);
 
   // Watch templates for changes
   //gulp.watch(jsPathForWatch).on('change', browserSync.reload);
