@@ -2,12 +2,15 @@
 /*
  * Sample string reverse function
  */
-import $ from 'jquery';
+import jQuery from 'jquery';
 import stringReverse from './string-reverse';
 
-const reversibleMessage = $('.js-reversible-message');
+// Make jQuery available for bootstrap
+window.jQuery = jQuery;
 
-$(document).on('click', '.js-reverse-message', (e) => {
+const reversibleMessage = jQuery('.js-reversible-message');
+
+jQuery(document).on('click', '.js-reverse-message', (e) => {
   e.preventDefault();
   const text = reversibleMessage.text();
   const reversedString = stringReverse(text);
