@@ -14,6 +14,7 @@ Read the [quickstart](#quickstart) instructions.
 - **CleanCSS** - Optimize and minify CSS
 - **BrowserSync** - Serve static files, inject CSS changes and auto-reload browser when files change
 - **Webpack** - Transpiles ES6 code to ES5
+- **Jasmine** - Behavior-driven development framework for testing JavaScript code
 
 ## Folder Structure
 
