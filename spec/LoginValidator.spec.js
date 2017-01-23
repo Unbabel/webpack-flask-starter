@@ -13,6 +13,8 @@ describe('LoginValidator', () => {
     expect(LoginValidator.passwordIsValid('')).toEqual(false);
     expect(LoginValidator.passwordIsValid('a')).toEqual(false);
     expect(LoginValidator.passwordIsValid('abcs ')).toEqual(false);
+    expect(LoginValidator.passwordIsValid('12345678')).toEqual(true);
+    expect(LoginValidator.passwordIsValid('abcdefgh')).toEqual(true);
     expect(LoginValidator.passwordIsValid('ab ')).toEqual(false);
     expect(LoginValidator.passwordIsValid('abcqqq de')).toEqual(false);
     expect(LoginValidator.passwordIsValid('abcde55')).toEqual(false);
