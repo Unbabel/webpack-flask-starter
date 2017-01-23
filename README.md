@@ -106,6 +106,8 @@ Run `gulp --target=prod` to generate minified assets ready to production
 
 ## Adding Bootstrap
 
+Bootstrap 4.0.0-alpha.6 is included by default.
+
 Run `yarn add bootstrap@4.0.0-alpha.6`
 
 Add `@import 'node_modules/bootstrap/scss/bootstrap';` to `src/scss/_dependencies.scss`
