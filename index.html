@@ -17,13 +17,6 @@
         <h1>Unbabel Front-end Starter</h1>
       </header>
 
-      <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <strong>Welcome!</strong> Bootstrap is ready to use.
-      </div>
-
       <p>This project attempts to be a quick and easy to setup environment for front-end development at Unbabel.</p>
 
       <p>It ships with <code>Bootstrap (v4.0.0-alpha.6)</code> to help you get started quickly. <a href="https://v4-alpha.getbootstrap.com/" target="_blank">View Documentation</a></p>
@@ -34,44 +27,11 @@
 
       <p>Contribute to this project at <code><a href="https://github.com/Unbabel/frontend-starter" target="_blank">unbabel/frontend-starter</a></code></p>
 
-      <div class="pt-5">
-        <h2>Sample code to reverse a string using jQuery</h2>
-        <p>This is fairly standard code written using ES6 modules to show how easy it is to use even if you're not familiar with it.</p>
-        <p>Take a look at <code>src/js/main.js</code> to see how it works</p>
-        <p class="js-reversible-message">Unbabel Front-end Starter</p>
-        <button type="button" class="btn btn-primary js-reverse-message">Reverse text</button>
-      </div>
-
-      <div class="pt-5 pb-5">
-        <div id="vue-demo-login">
-          <h2>Login using Vue.js</h2>
-          <p>Sample login form that can only be submitted if the username is larger than 5 characters and the password matches the requirements.</p>
-          <form v-on:submit.prevent="didSubmitForm">
-            <div class="form-group"><button type="button" class="btn btn-secondary btn-sm" v-on:click="applyDummyData">Apply dummy data</button></div>
-
-            <div class="form-group">
-              <label for="login-username">Username</label>
-              <input type="text" v-model="username" class="form-control" id="login-username">
-            </div>
-
-            <div class="form-group">
-              <label for="login-password">Password</label>
-              <input type="password" v-model="password" class="form-control" aria-describedby="passwordHelpBlock" id="login-password">
-              <p id="passwordHelpBlock" class="form-text text-muted">
-                Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-              </p>
-            </div>
-
-            <button type="submit" class="btn btn-primary" v-bind:disabled="!canSubmit">Login</button>
-          </form>
-
-        </div>
-      </div>
+      <a href="sample-jquery.html" class="btn btn-secondary">View jQuery Sample</a>
+      <a href="sample-vue.html" class="btn btn-secondary">View Vue.JS Sample</a>
 
     </div>
 
     <script src="dist/js/main.js"></script>
-    <script src="node_modules/bootstrap/js/dist/util.js"></script>
-    <script src="node_modules/bootstrap/js/dist/alert.js"></script>
   </body>
 </html>
