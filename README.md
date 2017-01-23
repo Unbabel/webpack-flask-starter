@@ -77,6 +77,14 @@ Recommended style guide: [`airbnb/javascript `](https://github.com/airbnb/javasc
 
 Your project starts at `src/js/main.js`, you may write your code using ES6 modules and all is compiled using Webpack.
 
+### Unit Testing
+
+We use [`jasmine`](https://jasmine.github.io/2.0/introduction.html) to create unit tests.
+
+Create a file inside `spec/` named `[something].spec.js`, do your imports, write your validations and it's done.
+
+Execute `npm test` to run all tests.
+
 ## Quickstart
 
 ### Requirements
