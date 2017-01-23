@@ -28,19 +28,19 @@ Describe the folder structure
     |   |- _base.scss
     |   ...
     |
-    |- partials/
+    |- components/
     |   |- _all.scss
     |   ...
     |
-	|- typography/
+    |- typography/
     |   |- _all.scss
-	|   |- _typography.less
-	|   ...
+    |   |- _typography.less
+    |   ...
     |
-	|- utils/
+    |- utils/
     |   |- _all.scss
     |   |- _grid.scss
-	|   ...
+    |   ...
     |
     |- views/
     |   |- _all.scss
@@ -49,7 +49,7 @@ Describe the folder structure
 **Description**
 
 - `/base` - Global project styles. Usually affect the global feel of the project.
-- `/partials` - Anything from buttons, forms, lists, cards, etc.
+- `/components` - Anything from buttons, forms, lists, cards, etc.
 - `/typography` - Typography related stuff. The overall typography of the project is defined here.
 - `/utils` - Useful pieces of css such grids, media query breakpoints, alignment stuff, clears, etc.
 - `/views` - Page/section specific styles.
@@ -105,6 +105,8 @@ Run `gulp serve`. This will compile all assets once, launch browsersync in the b
 Run `gulp --target=prod` to generate minified assets ready to production
 
 ## Adding Bootstrap
+
+Bootstrap 4.0.0-alpha.6 is included by default.
 
 Run `yarn add bootstrap@4.0.0-alpha.6`
 
