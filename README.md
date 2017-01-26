@@ -128,7 +128,11 @@ Make sure bower is installed
 
 - `bower` (v1.8.0 or higher) - Run `npm install -g bower` to install. [https://bower.io/](https://bower.io/)
 
-Then you can add packages via `bower`.
+Add `bower install` to `postinstall` on package.json
+
+Example: `"postinstall": "bower install && gulp --freshstart"`
+
+You can now add packages via `bower`.
 
 For example, run `bower install --save normalize-css` to install [normalize-css](https://necolas.github.io/normalize.css/)
 
