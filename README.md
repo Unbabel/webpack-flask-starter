@@ -113,7 +113,9 @@ Run `gulp --target=prod` to generate minified assets ready to production
 
 ## Adding Bootstrap
 
-Bootstrap 4.0.0-alpha.6 is included by default.
+**Bootstrap 4.0.0-alpha.6 is included by default.**
+
+Explanation on how to add **just for reference**
 
 Run `npm install --save bootstrap@4.0.0-alpha.6`
 
