@@ -90,19 +90,18 @@ Execute `npm test` to run all tests.
 
 ### Requirements
 
-- `node` (v6.8.1 or higher) - [https://nodejs.org/en/](https://nodejs.org/en/)
-- `yarn` (v0.18.1 or higher) - [https://yarnpkg.com/en/docs/install](https://yarnpkg.com/en/docs/install)
+- `npm` (included with node. v6.8.1 or higher) - [https://nodejs.org/en/](https://nodejs.org/en/)
 - `gulp-cli` (v1.2.2 or higher) - Run `npm install -g gulp-cli` to install. [http://gulpjs.com/](http://gulpjs.com/)
 
 ### How to use
 
-To start using `cd` into the project folder, run `yarn`.
+To start using `cd` into the project folder, run `npm install`.
 
-Running `yarn` will install all dependencies and compile the assets once.
+Running `npm install` will install all dependencies and compile the assets once.
 
-It's a good idea to run `yarn` when changing branches to make sure everything is updated.
+It's a good idea to run `npm install` when changing branches to make sure everything is updated.
 
-You may run `yarn && gulp serve` to install all requirements and open the browser to see something working.
+You may run `npm install && gulp serve` to install all requirements and open the browser to see something working.
 
 **While developing**
 
@@ -116,7 +115,7 @@ Run `gulp --target=prod` to generate minified assets ready to production
 
 Bootstrap 4.0.0-alpha.6 is included by default.
 
-Run `yarn add bootstrap@4.0.0-alpha.6`
+Run `npm install --save bootstrap@4.0.0-alpha.6`
 
 Add `@import 'node_modules/bootstrap/scss/bootstrap';` to `src/scss/_dependencies.scss`
 
