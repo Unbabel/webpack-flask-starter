@@ -14,7 +14,7 @@
     "email": "community@dev.unbabel.com"
   },
   "scripts": {
-    "postinstall": "bower install && gulp --freshstart",
+    "postinstall": "gulp --freshstart",
     "csscomb": "./node_modules/csscomb/bin/csscomb src/scss",
     "test": "./node_modules/babel-cli/bin/babel-node.js spec/run.js"
   },

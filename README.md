@@ -90,20 +90,18 @@ Execute `npm test` to run all tests.
 
 ### Requirements
 
-- `node` (v6.8.1 or higher) - [https://nodejs.org/en/](https://nodejs.org/en/)
-- `yarn` (v0.18.1 or higher) - [https://yarnpkg.com/en/docs/install](https://yarnpkg.com/en/docs/install)
-- `bower` (v1.8.0 or higher) - Run `npm install -g bower` to install. [https://bower.io/](https://bower.io/)
+- `npm` (included with node. v6.8.1 or higher) - [https://nodejs.org/en/](https://nodejs.org/en/)
 - `gulp-cli` (v1.2.2 or higher) - Run `npm install -g gulp-cli` to install. [http://gulpjs.com/](http://gulpjs.com/)
 
 ### How to use
 
-To start using `cd` into the project folder, run `yarn`.
+To start using `cd` into the project folder, run `npm install`.
 
-Running `yarn` will install all dependencies and compile the assets once.
+Running `npm install` will install all dependencies and compile the assets once.
 
-It's a good idea to run `yarn` when changing branches to make sure everything is updated.
+It's a good idea to run `npm install` when changing branches to make sure everything is updated.
 
-You may run `yarn && gulp serve` to install all requirements and open the browser to see something working.
+You may run `npm install && gulp serve` to install all requirements and open the browser to see something working.
 
 **While developing**
 
@@ -115,10 +113,28 @@ Run `gulp --target=prod` to generate minified assets ready to production
 
 ## Adding Bootstrap
 
-Bootstrap 4.0.0-alpha.6 is included by default.
+**Bootstrap 4.0.0-alpha.6 is included by default.**
 
-Run `yarn add bootstrap@4.0.0-alpha.6`
+Explanation on how to add **just for reference**
+
+Run `npm install --save bootstrap@4.0.0-alpha.6`
 
 Add `@import 'node_modules/bootstrap/scss/bootstrap';` to `src/scss/_dependencies.scss`
 
 All bootstrap css elements are now available
+
+## Managing Front-end Dependencies using Bower
+
+Make sure bower is installed
+
+- `bower` (v1.8.0 or higher) - Run `npm install -g bower` to install. [https://bower.io/](https://bower.io/)
+
+Add `bower install` to `postinstall` on package.json
+
+Example: `"postinstall": "bower install && gulp --freshstart"`
+
+You can now add packages via `bower`.
+
+For example, run `bower install --save normalize-css` to install [normalize-css](https://necolas.github.io/normalize.css/)
+
+Then add `@import 'bower_components/normalize-css/normalize';` to `src/scss/_dependencies.scss`
