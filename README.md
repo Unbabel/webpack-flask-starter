@@ -161,5 +161,5 @@ In `gulpfile.js`, look for:
 And replace with
 
 	const browserSyncOptions = {
-	  proxy: 'yourlocal.dev'
+	  proxy: 'localhost:5000'
 	};
