@@ -138,3 +138,28 @@ You can now add packages via `bower`.
 For example, run `bower install --save normalize-css` to install [normalize-css](https://necolas.github.io/normalize.css/)
 
 Then add `@import 'bower_components/normalize-css/normalize';` to `src/scss/_dependencies.scss`
+
+## Integrate with Flask Template Project
+
+[flask-template-project by andreffs18](https://github.com/andreffs18/flask-template-project)
+
+You need to change the following:
+
+1. Move `src` dir to `project/static/`
+2. Edit `gulpfile.js`, search for `rootDir` and change to `./project/static`
+
+**You also need to change BrowserSync options**
+
+In `gulpfile.js`, look for:
+
+	const browserSyncOptions = {
+	  server: {
+	    baseDir: `${rootDir}/`,
+	  },
+	};
+	
+And replace with
+
+	const browserSyncOptions = {
+	  proxy: 'yourlocal.dev'
+	};
