@@ -149,7 +149,7 @@ const webpack = require('webpack');
 
 const webpackConfig = require('./webpack.config.js');
 
-const webpackConfigExists = webpackConfig.entry;
+const webpackConfigExists = webpackConfig.entry.length > 0;
 
 if (webpackConfigExists) {
   if (targetIsProd) {
@@ -202,6 +202,8 @@ gulp.task('serve', ['default'], () => {
   // Watch webpack for changes
   if (webpackConfigExists) {
     gulp.watch(`${webpackConfig.context}/**/*.js`, ['watch-webpack']);
+  } else {
+    gulp.watch(`${webpackConfig.context}/**/*.js`).on('change', browserSync.reload);
   }
 
   // Watch files for changes
