@@ -14,21 +14,20 @@
     "email": "community@dev.unbabel.com"
   },
   "scripts": {
-    "postinstall": "gulp --freshstart",
+    "postinstall": "bower install && gulp --freshstart",
+    "bower": "./node_modules/bower/bin/bower",
     "csscomb": "csscomb src/scss",
     "test": "./node_modules/babel-cli/bin/babel-node.js spec/run.js",
     "serve": "gulp serve"
   },
   "dependencies": {
-    "bootstrap": "4.0.0-alpha.6",
-    "jquery": "^3.1.1",
-    "vue": "^2.1.10"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-core": "^6.21.0",
     "babel-loader": "^6.2.10",
     "babel-preset-es2015": "^6.18.0",
+    "bower": "^1.8.0",
     "browser-sync": "^2.18.6",
     "csscomb": "^3.1.7",
     "eslint": "^3.13.1",

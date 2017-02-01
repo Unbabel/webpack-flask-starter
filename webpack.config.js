@@ -1,7 +1,10 @@
 const path = require('path');
-
+var webpack = require("webpack");
 module.exports = {
   context: path.join(__dirname, 'src', 'js'),
+  resolve: {
+      modulesDirectories: ["bower_components"]
+  },
   entry: {
     main: './main.js',
   },
@@ -21,5 +24,9 @@ module.exports = {
       },
     }],
   },
-  plugins: [],
+  plugins: [
+    new webpack.ResolverPlugin(
+        new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin(".bower.json", ["main"])
+    )
+  ]
 };

@@ -111,33 +111,40 @@ Run `gulp serve`. This will compile all assets once, launch browsersync in the b
 
 Run `gulp --target=prod` to generate minified assets ready to production
 
+## Managing Front-end Dependencies using Bower
+
+`bower` is recommended to manage front-end dependencies. `bower` allows you to specify the directory where the dependencies will be installed. **This is important when working with a `flask` server, which stores all public assets inside `static`.**
+
+**Bower is bundled as a devDependency.** You can run it with the following command.
+	
+	// Install something and saving to dependencies list
+	$ npm run bower -- install -S normalize-css
+	
+	/*
+	Npm is running local bower for us without the need for a global install
+	Anything added after the first -- is sent directly to bower binary
+	Under the hood, npm is running the following: bower install -S normalize-css
+	*/
+
+Optionally you can install `bower` globally.
+
+**Example of how to install and include `normalize-css`**
+
+Run `npm run bower -- install -S normalize-css` to install [normalize-css](https://necolas.github.io/normalize.css/)
+
+Then add `@import 'bower_components/normalize-css/normalize';` to `src/scss/_dependencies.scss`
+
 ## Adding Bootstrap
 
 **Bootstrap 4.0.0-alpha.6 is included by default.**
 
 Explanation on how to add **just for reference**
 
-Run `npm install --save bootstrap@4.0.0-alpha.6`
+Run `npm run bower -- install -S bootstrap@4.0.0-alpha.6`
 
-Add `@import 'node_modules/bootstrap/scss/bootstrap';` to `src/scss/_dependencies.scss`
+Add `@import 'bower_components/bootstrap/scss/bootstrap';` to `src/scss/_dependencies.scss`
 
 All bootstrap css elements are now available
-
-## Managing Front-end Dependencies using Bower
-
-Make sure bower is installed
-
-- `bower` (v1.8.0 or higher) - Run `npm install -g bower` to install. [https://bower.io/](https://bower.io/)
-
-Add `bower install` to `postinstall` on package.json
-
-Example: `"postinstall": "bower install && gulp --freshstart"`
-
-You can now add packages via `bower`.
-
-For example, run `bower install --save normalize-css` to install [normalize-css](https://necolas.github.io/normalize.css/)
-
-Then add `@import 'bower_components/normalize-css/normalize';` to `src/scss/_dependencies.scss`
 
 ## Integrate with Flask Template Project
 
@@ -147,6 +154,7 @@ You need to change the following:
 
 1. Move `src` dir to `project/static/`
 2. Edit `gulpfile.js`, search for `rootDir` and change to `./project/static`
+3. Edit `.bowerrc`, search for `directory` and change to `./project/static/bower_components`
 
 **You also need to change BrowserSync options**
 
