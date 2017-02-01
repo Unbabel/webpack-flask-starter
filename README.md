@@ -1,5 +1,7 @@
 # Unbabel Front-end Starter
 
+[![CircleCI](https://circleci.com/gh/Unbabel/frontend-starter/tree/master.svg?style=svg&circle-token=97edd512a945d1412a5a0ff0ba51de509bd837db)](https://circleci.com/gh/Unbabel/frontend-starter/tree/master)
+
 Starting point front-end projects at Unbabel
 
 This repo aims to provide a simple starting point, using Gulp to run several tasks, for example compile SASS, JavaScript module approach, serve files using BrowserSync providing CSS injection and auto browser reloading.
