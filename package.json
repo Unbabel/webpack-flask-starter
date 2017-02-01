@@ -15,8 +15,9 @@
   },
   "scripts": {
     "postinstall": "gulp --freshstart",
-    "csscomb": "./node_modules/csscomb/bin/csscomb src/scss",
-    "test": "./node_modules/babel-cli/bin/babel-node.js spec/run.js"
+    "csscomb": "csscomb src/scss",
+    "test": "./node_modules/babel-cli/bin/babel-node.js spec/run.js",
+    "serve": "gulp serve"
   },
   "dependencies": {
     "bootstrap": "4.0.0-alpha.6",
