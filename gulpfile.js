@@ -149,7 +149,7 @@ const webpack = require('webpack');
 
 const webpackConfig = require('./webpack.config.js');
 
-const webpackConfigExists = webpackConfig.entry.length > 0;
+const webpackConfigExists = Object.keys(webpackConfig.entry).length > 0;
 
 if (webpackConfigExists) {
   if (targetIsProd) {
