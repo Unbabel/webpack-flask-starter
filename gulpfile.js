@@ -43,7 +43,7 @@ const freshStart = (targetIsProd || options.has('freshstart'));
 const rootDir = '.';
 const srcDir = rootDir + '/src';
 const distDir = rootDir + '/dist';
-const templatesDir = rootDir + '/';
+const templatesDir = rootDir;
 
 
 /*
@@ -187,7 +187,7 @@ if (webpackConfigExists) {
 
 const browserSyncOptions = {
   server: {
-    baseDir: `${rootDir}/`,
+    baseDir: `${rootDir}`,
   },
 };
 
