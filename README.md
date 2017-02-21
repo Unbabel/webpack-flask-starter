@@ -156,7 +156,8 @@ You need to change the following:
 
 1. Move `src` dir to `project/static/`
 2. Edit `gulpfile.js`, search for `rootDir` and change to `./project/static`
-3. Edit `.bowerrc`, search for `directory` and change to `./project/static/bower_components`
+3. Edit `webpack.config.js`, search for `node_modules` and change to `../../node_modules`
+4. Edit `.bowerrc`, search for `directory` and change to `./project/static/bower_components`
 
 **You also need to change BrowserSync options**
 

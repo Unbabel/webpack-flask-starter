@@ -4,7 +4,10 @@ const webpack = require('webpack');
 module.exports = {
   context: path.join(__dirname, 'src', 'js'),
   resolve: {
-    modulesDirectories: ['bower_components'],
+    modulesDirectories: [
+      'bower_components',
+      'node_modules',
+    ],
   },
   entry: {
     main: './main.js',
