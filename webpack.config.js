@@ -1,12 +1,15 @@
 const path = require('path');
-const webpack = require('webpack');
 
 module.exports = {
   context: path.join(__dirname, 'src', 'js'),
   resolve: {
-    modulesDirectories: [
-      'bower_components',
+    alias: {
+      vue$: 'vue/dist/vue.esm.js',
+      jquery$: 'jquery/dist/jquery.js',
+    },
+    modules: [
       'node_modules',
+      'bower_components',
     ],
   },
   entry: {
@@ -19,16 +22,14 @@ module.exports = {
     sourceMapFilename: '[name].js.map',
   },
   module: {
-    loaders: [{
+    rules: [{
       test: /\.js$/,
       exclude: /(node_modules|bower_components)/,
-      loader: 'babel',
-      query: {
+      loader: 'babel-loader',
+      options: {
         presets: ['es2015'],
       },
     }],
   },
-  plugins: [
-    new webpack.ResolverPlugin(new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin('.bower.json', ['main'])),
-  ],
+  plugins: [],
 };

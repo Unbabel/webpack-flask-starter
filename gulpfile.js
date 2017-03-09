@@ -24,14 +24,14 @@ const empty = util.noop;
  *
  * Development or Production
  *
- * dev || prod
+ * development || prod
  * --freshstart means that files are compiled regardless if they have or not changed
  */
 
-const defaultTarget = 'dev';
-const targetMode = options.has('target') && ['dev', 'prod'].indexOf(options.get('target')) !== -1 ? options.get('target') : defaultTarget;
-const targetIsDev = targetMode === 'dev';
-const targetIsProd = targetMode === 'prod';
+const defaultTarget = 'development';
+const targetMode = options.has('target') && ['development', 'production'].indexOf(options.get('target')) !== -1 ? options.get('target') : defaultTarget;
+const targetIsDevelopment = targetMode === 'development';
+const targetIsProd = targetMode === 'production';
 
 const freshStart = (targetIsProd || options.has('freshstart'));
 
@@ -161,6 +161,14 @@ if (webpackConfigExists) {
     });
     webpackConfig.plugins.push(webpackUglifyJsPlugin);
   }
+
+  // This sets node_env to production or development
+  // It is relevant for vue compilation
+  webpackConfig.plugins.push(new webpack.DefinePlugin({
+    'process.env': {
+      NODE_ENV: JSON.stringify(targetMode),
+    },
+  }));
 
   // Webpack
   gulp.task('build-webpack', (cb) => {
