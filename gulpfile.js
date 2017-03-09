@@ -104,8 +104,8 @@ const sourcemaps = require('gulp-sourcemaps');
 const autoprefixer = require('gulp-autoprefixer');
 const cleanCSS = require('gulp-clean-css');
 
-gulp.task('compile-css', (cb) => {
-  pump([
+function compileCssStream() {
+  return [
     gulp.src(styleSourcePath),
 
     // Init sourcemaps
@@ -128,12 +128,20 @@ gulp.task('compile-css', (cb) => {
 
     // Save files
     gulp.dest(styleDestination),
+  ];
+}
 
-    // Stream changed files to browsersync
+gulp.task('compile-css', (cb) => {
+  pump(compileCssStream(), cb);
+});
+
+gulp.task('stream-css', (cb) => {
+  // Stream changed files to browsersync
+  pump(compileCssStream().concat([
     browserSync.stream({
       match: '**/*.css',
     }),
-  ], cb);
+  ]), cb);
 });
 
 gulp.task('watch-css', ['compile-css'], () => {
@@ -205,7 +213,7 @@ gulp.task('serve', ['default'], () => {
   browserSync.init(browserSyncOptions);
 
   // Watch less for changes
-  gulp.watch(stylesPathForWatch, ['compile-css']);
+  gulp.watch(stylesPathForWatch, ['stream-css']);
 
   // Watch webpack for changes
   if (webpackConfigExists) {
