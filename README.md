@@ -12,7 +12,7 @@ This repo's goal is to get your front-end buildsystems up and running faster. It
 5. Edit the port number to match your project's (default is 5000)
 6. Run `npm run install`
 
-If you want to know more about each file, read the [Not-so-quick start](#Not-so-quick start).
+If you want to know more about each file, there's more info [here](#files).
 
 ## Features:
 - Compiles Vue.js single file components
@@ -85,7 +85,7 @@ There is really no reason why you shouldn't lint your files: it prevents bugs, m
 
 We use a slightly modified version of [AirBnb's congif](https://www.npmjs.com/package/eslint-config-airbnb-base), the biggest difference being the use of Tabs instead of Spaces. The livereload server that starts when you use `npm run dev` lints your files automatically and will show an annoying overlay if there are errors (and show the warnings on the console) that prevents you from seeing the page.
 
-## Not-so-quick start
+## Files
 In case you're curious regarding what each file does. Assuming `/` is your project's root folder, and your Flask app is inside the `/coolest_app`:
 
 1. Copy the package.json file to `/` and edit it to match your project
