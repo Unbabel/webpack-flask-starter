@@ -10,6 +10,7 @@ This repo's goal is to get your front-end buildsystems up and running faster. It
 3. Add your entry points on the `webpack.base.config.js` file
 4. Edit the proxy table on the `config/index.js` file
 5. Edit the port number to match your project's (default is 5000)
+6. Run `npm run install`
 
 If you want to know more about each file, read the [Not-so-quick start](Not-so-quick start).
 
@@ -21,6 +22,15 @@ If you want to know more about each file, read the [Not-so-quick start](Not-so-q
 - Has a production mode that compresses the files
 - Lints the .vue and .js files
 - Adds polyfills using Babel
+
+## Commands
+- `npm run install` to install the dependencies
+- `npm run bower` to run bower
+- `npm run test` to run the tests
+- `npm run dev` to launch a dev server with livereload
+- `npm run start` shortcut for `npm run dev`
+- `npm run build` to compile the assets for production
+- `npm run lint` to lint your files
 
 ## Folder structure
 We kept the folder structure as flexible as possible, with some quick find and replaces to fix the paths you should be able to move stuff around.
