@@ -83,10 +83,12 @@ We are using Jest for all tests, with the help of the @vue/test-utils library to
 ## Linting
 There is really no reason why you shouldn't lint your files: it prevents bugs, makes projects inside the same organization consistent and mantains the overall sanity of the other humans who look at your code.
 
-We use a slightly modified version of [AirBnb's congif](https://www.npmjs.com/package/eslint-config-airbnb-base), the biggest difference being the use of Tabs instead of Spaces. The livereload server that starts when you use `npm run dev` lints your files automatically and will show an annoying overlay if there are errors (and show the warnings on the console) that prevents you from seeing the page.
+We use a slightly modified version of [AirBnb's config](https://www.npmjs.com/package/eslint-config-airbnb-base), the biggest difference being the use of Tabs instead of Spaces.    
+The livereload server that starts when you use `npm run dev` lints your files automatically and will show an annoying overlay if there are errors (and show the warnings on the console) that prevents you from seeing the page.
 
 ## Files
-In case you're curious regarding what each file does. Assuming `/` is your project's root folder, and your Flask app is inside the `/coolest_app`:
+In case you're curious regarding what each file does, here is a more detailed guide to getting this build system working.
+> Assuming `/` is your project's root folder, and your Flask app is inside the `/coolest_app`:
 
 1. Copy the package.json file to `/` and edit it to match your project
 2. Copy the `.babelrc` file to `/` — these are the settings for Babel
