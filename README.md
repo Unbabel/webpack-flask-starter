@@ -12,7 +12,7 @@ This repo's goal is to get your front-end buildsystems up and running faster. It
 5. Edit the port number to match your project's (default is 5000)
 6. Run `npm run install`
 
-If you want to know more about each file, read the [Not-so-quick start](Not-so-quick start).
+If you want to know more about each file, read the [Not-so-quick start](#Not-so-quick start).
 
 ## Features:
 - Compiles Vue.js single file components
