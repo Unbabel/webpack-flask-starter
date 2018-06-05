@@ -2,9 +2,40 @@
 
 [![CircleCI](https://circleci.com/gh/Unbabel/frontend-starter/tree/master.svg?style=svg&circle-token=97edd512a945d1412a5a0ff0ba51de509bd837db)](https://circleci.com/gh/Unbabel/frontend-starter/tree/master)
 
-Starting point front-end projects at Unbabel
+The starting point for front-end projects at Unbabel
 
-This repo aims to provide a simple starting point, using Gulp to run several tasks, for example compile SASS, JavaScript module approach, serve files using BrowserSync providing CSS injection and auto browser reloading.
+This repo's goal is to get your front-end buildsystems up and running faster. It's based on the [Vue.js Webpack boilerplate](https://github.com/vuejs-templates/webpack) and was modified to play nice with a Flask project.
+
+## Features:
+- compiles Vue.js single file components
+- processes .scss files
+- is ready to test the frontend using Jest
+- has a dev mode that launches a server with livereload
+- has a production mode that compresses the files
+- lints the .vue and .js files
+- adds polyfills using Babel
+
+## Quick start
+1. copy everything except this README
+2. search for "coolest_app" and change that to match your project
+
+## Not-so-quick start
+In case you're curious regarding what each file does. Assuming `/` is your project's root folder, and your Flask app is inside the `/coolest_app`:
+
+1. Copy the package.json file to `/` and edit it to match your project
+2. Copy the `.babelrc` file to `/` — these are the settings for Babel
+3. Copy the `.eslintrc.js` file to `/` — these are our linter rules, based off AirBnB's rules, with some modifications to make it more readable, the biggest change is the use of Tabs instead of Spaces
+4. (If you need Bower) Copy the `.bowerrc` file to `/` — this is the Bower config, that places the bower_components inside your projects' static folder
+5. (If you need Bower) Copy the `bower.json` file to `/` and add your Bower dependencies
+6. Add the contents of the `.gitignore` file to your `.gitignore` — we suggest not commiting the `/coolest_app/static/dist/` folder, as your deploy process should take care of the generating the final dist files, but remove that line if you need it
+7. Copy the `jest.config.js` file to `/` — this is the Jest config file, which includes minimum thresholds :)
+8.
+
+
+
+## Using the @unbabel/ui
+"@unbabel/ui": "git+ssh://git@gitlab.com/Unbabel/ui.git",
+    "@unbabel/uuif-converter": "git+ssh://git@gitlab.com/Unbabel/uuif-converter.git",
 
 Read the [quickstart](#quickstart) instructions.
 
@@ -118,10 +149,10 @@ Run `gulp --target=prod` to generate minified assets ready to production
 `bower` is recommended to manage front-end dependencies. `bower` allows you to specify the directory where the dependencies will be installed. **This is important when working with a `flask` server, which stores all public assets inside `static`.**
 
 **Bower is bundled as a devDependency.** You can run it with the following command.
-	
+
 	// Install something and saving to dependencies list
 	$ npm run bower -- install -S normalize-css
-	
+
 	/*
 	Npm is running local bower for us without the need for a global install
 	Anything added after the first -- is sent directly to bower binary
@@ -168,7 +199,7 @@ In `gulpfile.js`, look for:
 	    baseDir: `${rootDir}/`,
 	  },
 	};
-	
+
 And replace with
 
 	const browserSyncOptions = {
