@@ -68,7 +68,7 @@ Don't forget the `manifest.js`!
 ```
 
 ## Testing
-We are using Jest for all tests, with the help of the @vue/test-utils library to test Vue.js components more easily.
+We are using Jest for all tests, with the help of the @vue/test-utils library to test Vue.js components more easily. There is an example file on the `/coolest_app/static/tests/unit/js/` folder, that is ready to test Vuex store, if you have that in your apps.
 
 ## Not-so-quick start
 In case you're curious regarding what each file does. Assuming `/` is your project's root folder, and your Flask app is inside the `/coolest_app`:
@@ -86,107 +86,3 @@ In case you're curious regarding what each file does. Assuming `/` is your proje
 11. Copy the `/coolest_app/static/config/` folder to `/coolest_app/static/`
 12. Change the list of proxies on `/coolest_app/static/config/index.js` with your entries — this lets the dev server inject the styles on the page instead of using the dist css files
 13. Run `npm install` — this will install the dependencies, install the bower components and build all the files for production
-
-
-
-
-
-
-### Module approach
-
-Your project starts at `src/js/main.js`, you may write your code using ES6 modules and all is compiled using Webpack.
-
-### Unit Testing
-
-We use [`jasmine`](https://jasmine.github.io/2.0/introduction.html) to create unit tests.
-
-Create a file inside `spec/` named `[something].spec.js`, do your imports, write your validations and it's done.
-
-Execute `npm test` to run all tests.
-
-## Quickstart
-
-### Requirements
-
-- `npm` (included with node. v6.8.1 or higher) - [https://nodejs.org/en/](https://nodejs.org/en/)
-- `gulp-cli` (v1.2.2 or higher) - Run `npm install -g gulp-cli` to install. [http://gulpjs.com/](http://gulpjs.com/)
-
-### How to use
-
-To start using `cd` into the project folder, run `npm install`.
-
-Running `npm install` will install all dependencies and compile the assets once.
-
-It's a good idea to run `npm install` when changing branches to make sure everything is updated.
-
-You may run `npm install && gulp serve` to install all requirements and open the browser to see something working.
-
-**While developing**
-
-Run `gulp serve`. This will compile all assets once, launch browsersync in the browser. It then watches for css and javascript changes. When css changes, it gets injected. When JavaScript changes, the page reloads.
-
-## Generating production-ready assets
-
-Run `gulp --target=prod` to generate minified assets ready to production
-
-## Managing Front-end Dependencies using Bower
-
-`bower` is recommended to manage front-end dependencies. `bower` allows you to specify the directory where the dependencies will be installed. **This is important when working with a `flask` server, which stores all public assets inside `static`.**
-
-**Bower is bundled as a devDependency.** You can run it with the following command.
-
-	// Install something and saving to dependencies list
-	$ npm run bower -- install -S normalize-css
-
-	/*
-	Npm is running local bower for us without the need for a global install
-	Anything added after the first -- is sent directly to bower binary
-	Under the hood, npm is running the following: bower install -S normalize-css
-	*/
-
-Optionally you can install `bower` globally.
-
-**Example of how to install and include `normalize-css`**
-
-Run `npm run bower -- install -S normalize-css` to install [normalize-css](https://necolas.github.io/normalize.css/)
-
-Then add `@import 'bower_components/normalize-css/normalize';` to `src/scss/_dependencies.scss`
-
-## Adding Bootstrap
-
-**Bootstrap 4.0.0-alpha.6 is included by default.**
-
-Explanation on how to add **just for reference**
-
-Run `npm run bower -- install -S bootstrap@4.0.0-alpha.6`
-
-Add `@import 'bower_components/bootstrap/scss/bootstrap';` to `src/scss/_dependencies.scss`
-
-All bootstrap css elements are now available
-
-## Integrate with Flask Template Project
-
-[flask-template-project by andreffs18](https://github.com/andreffs18/flask-template-project)
-
-You need to change the following:
-
-1. Move `src` dir to `project/static/`
-2. Edit `gulpfile.js`, search for `rootDir` and change to `./project/static`
-3. Edit `webpack.config.js`, search for `node_modules` and change to `../../node_modules`
-4. Edit `.bowerrc`, search for `directory` and change to `./project/static/bower_components`
-
-**You also need to change BrowserSync options**
-
-In `gulpfile.js`, look for:
-
-	const browserSyncOptions = {
-	  server: {
-	    baseDir: `${rootDir}/`,
-	  },
-	};
-
-And replace with
-
-	const browserSyncOptions = {
-	  proxy: 'localhost:5000'
-	};
