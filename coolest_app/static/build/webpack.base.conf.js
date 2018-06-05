@@ -3,6 +3,13 @@ const utils = require('./utils');
 const config = require('../config');
 const vueLoaderConfig = require('./vue-loader.conf');
 const eslintFriendlyFormatter = require('eslint-friendly-formatter');
+// Optional: if you need to merge non-module files
+// const MergeIntoSingleFilePlugin = require('webpack-merge-and-include-globally');
+// const mergedFiles = require('./merged-files');
+
+// Optional: if you need to copy files into the dist folder
+// const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 // Cleans up folders
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
@@ -85,5 +92,16 @@ module.exports = {
 	},
 	plugins: [
 		cleanPlugin,
+		// Optional: if you need to copy files into the dist folder
+		// new CopyWebpackPlugin([
+		// 	{
+		// 		from: './coolest_app/static/folder_name',
+		// 		to: 'js',
+		// 	},
+		// ]),
+		// Optional: if you need to merge non-module files
+		// new MergeIntoSingleFilePlugin({
+		// 	files: mergedFiles,
+		// }),
 	],
 };

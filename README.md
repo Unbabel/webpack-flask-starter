@@ -81,8 +81,9 @@ In case you're curious regarding what each file does. Assuming `/` is your proje
 6. Add the contents of the `.gitignore` file to your `.gitignore` — we suggest not commiting the `/coolest_app/static/dist/` folder, as your deploy process should take care of the generating the final dist files, but remove that line if you need it
 7. Copy the `jest.config.js` file to `/` — this is the Jest config file, which includes minimum thresholds :)
 8. Copy the `/coolest_app/static/build/` folder to `/coolest_app/static/` — this is the config for building/serving
-9. Change the path on `/coolest_app/static/build/webpack.dev.conf.js:12` to match your project
-10. Add your entry files on `/coolest_app/static/build/webpack.base.conf.js:17` — the property name is the filename that you'll end up with, the string is the path
-11. Copy the `/coolest_app/static/config/` folder to `/coolest_app/static/`
-12. Change the list of proxies on `/coolest_app/static/config/index.js` with your entries — this lets the dev server inject the styles on the page instead of using the dist css files
-13. Run `npm install` — this will install the dependencies, install the bower components and build all the files for production
+9. (Optional) Copy the `/coolest_app/static/build/merged_files.js` file to `/coolest_app/static/build/` — if you need to merge non-module files into one (or more), also check the bottom of the `webpack.base.conf.js` file if that's the case
+10. Change the path on `/coolest_app/static/build/webpack.dev.conf.js:12` to match your project
+11. Add your entry files on `/coolest_app/static/build/webpack.base.conf.js:17` — the property name is the filename that you'll end up with, the string is the path
+12. Copy the `/coolest_app/static/config/` folder to `/coolest_app/static/`
+13. Change the list of proxies on `/coolest_app/static/config/index.js` with your entries — this lets the dev server inject the styles on the page instead of using the dist css files
+14. Run `npm install` — this will install the dependencies, install the bower components and build all the files for production
