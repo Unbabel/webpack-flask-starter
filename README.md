@@ -6,6 +6,15 @@ The starting point for front-end projects at Unbabel
 
 This repo's goal is to get your front-end buildsystems up and running faster. It's based on the [Vue.js Webpack boilerplate](https://github.com/vuejs-templates/webpack) and was modified to play nice with a Flask project.
 
+## Quick start
+1. copy everything except this README
+2. search for "coolest_app" and change that to match your project
+3. add your entry points on the webpack.base.config.js file
+4. edit the proxy table on the config/index.js file
+5. edit the port number to match your project's (default is 5000)
+
+If you want to know more about each file, read the [#Not-so-quick start](Not-so-quick start).
+
 ## Features:
 - compiles Vue.js single file components
 - processes .scss files
@@ -15,9 +24,51 @@ This repo's goal is to get your front-end buildsystems up and running faster. It
 - lints the .vue and .js files
 - adds polyfills using Babel
 
-## Quick start
-1. copy everything except this README
-2. search for "coolest_app" and change that to match your project
+## Folder structure
+We kept the folder structure as flexible as possible, with some quick find and replaces to fix the paths you should be able to move stuff around.
+The `/coolest_app/static/` which emulates your project's static folder will be populated with a `dist` folder with the files ready to be served by Flask.
+
+### Vue
+The `/coolest_app/static/vue/` folder has 2 folders:
+- `/apps/` — for _big-ish_ applications, that are used in one place
+- `/components/` — for vue components that are used in multiple places, the LoadingSpinner is a good example, as it might be used in a UserSettings.vue app _and_ in a UserSignup.vue app
+
+This separation might seem overkill, and it might be, depending on the size of your project, but you can always scale it down. This is the structure used on the Core.
+
+#### Importing stuff on your .vue components
+You might need to import components from a UI Library, to do that you should add it to the `package.json`:
+```
+"@unbabel/ui": "git+ssh://git@gitlab.com/Unbabel/ui.git",
+```
+
+And then import it on your Vue component using:
+```
+import { Modal, Button } from '@unbabel/ui';
+```
+for javascript, or for the styles:
+```
+@import '~@unbabel/ui/src/colors';
+```
+
+### Sass
+Inside the `/coolest_app/static/src/scss/` folder is a possible structure that scales nicely. Put the elements/components that you use frequently inside the `/components/`, add the base styles to the `/base/` folder and the page-specific styles to the `/views/`.
+For very small projects you can just compile the `/coolest_app/static/src/scss/all.scss` file and use that on all pages, but as soon as you get some complexity (for example if you have a user facing views and admin views), you probably should separate that, or compile each view .scss file.
+
+
+### Linking to the assets
+You can use
+```
+<script type="text/javascript" src="{{ url_for('static', filename='dist/app.js') }}"></script>
+```
+to link to the dist files.
+
+Don't forget the `manifest.js`!
+```
+<script type="text/javascript" src="{{ url_for('static', filename='dist/js/manifest.bundle.js') }}"></script>
+```
+
+## Testing
+We are using Jest for all tests, with the help of the @vue/test-utils library to test Vue.js components more easily.
 
 ## Not-so-quick start
 In case you're curious regarding what each file does. Assuming `/` is your project's root folder, and your Flask app is inside the `/coolest_app`:
@@ -29,83 +80,17 @@ In case you're curious regarding what each file does. Assuming `/` is your proje
 5. (If you need Bower) Copy the `bower.json` file to `/` and add your Bower dependencies
 6. Add the contents of the `.gitignore` file to your `.gitignore` — we suggest not commiting the `/coolest_app/static/dist/` folder, as your deploy process should take care of the generating the final dist files, but remove that line if you need it
 7. Copy the `jest.config.js` file to `/` — this is the Jest config file, which includes minimum thresholds :)
-8.
+8. Copy the `/coolest_app/static/build/` folder to `/coolest_app/static/` — this is the config for building/serving
+9. Change the path on `/coolest_app/static/build/webpack.dev.conf.js:12` to match your project
+10. Add your entry files on `/coolest_app/static/build/webpack.base.conf.js:17` — the property name is the filename that you'll end up with, the string is the path
+11. Copy the `/coolest_app/static/config/` folder to `/coolest_app/static/`
+12. Change the list of proxies on `/coolest_app/static/config/index.js` with your entries — this lets the dev server inject the styles on the page instead of using the dist css files
+13. Run `npm install` — this will install the dependencies, install the bower components and build all the files for production
 
 
 
-## Using the @unbabel/ui
-"@unbabel/ui": "git+ssh://git@gitlab.com/Unbabel/ui.git",
-    "@unbabel/uuif-converter": "git+ssh://git@gitlab.com/Unbabel/uuif-converter.git",
 
-Read the [quickstart](#quickstart) instructions.
 
-## Tooling
-
-- **Gulp** - Run project tasks
-- **SASS** - CSS pre-processor (SCSS syntax)
-- **Autoprefixer** - Parse CSS and add vendor prefixes to rules using values from Can I Use.
-- **CleanCSS** - Optimize and minify CSS
-- **BrowserSync** - Serve static files, inject CSS changes and auto-reload browser when files change
-- **Webpack** - Transpiles ES6 code to ES5
-- **Jasmine** - Behavior-driven development framework for testing JavaScript code
-
-## Folder Structure
-
-Describe the folder structure
-
-### Styles
-
-    scss/
-    |
-    |- base/
-    |   |- _all.scss
-    |   |- _base.scss
-    |   ...
-    |
-    |- components/
-    |   |- _all.scss
-    |   ...
-    |
-    |- typography/
-    |   |- _all.scss
-    |   |- _typography.less
-    |   ...
-    |
-    |- utils/
-    |   |- _all.scss
-    |   |- _grid.scss
-    |   ...
-    |
-    |- views/
-    |   |- _all.scss
-    |   ...
-
-**Description**
-
-- `/base` - Global project styles. Usually affect the global feel of the project.
-- `/components` - Anything from buttons, forms, lists, cards, etc.
-- `/typography` - Typography related stuff. The overall typography of the project is defined here.
-- `/utils` - Useful pieces of css such grids, media query breakpoints, alignment stuff, clears, etc.
-- `/views` - Page/section specific styles.
-- `_dependencies.scss` - Import your external dependencies here.
-- `_settings.scss` - Contains variables used across the project.
-- `main.scss` - The main app file that imports everything else.
-
-Each folder usually has a `_all.scss` file that imports all files within the folder.
-
-## CSS
-
-Talk about less and file naming conventions. Files starting with underscore
-
-### Style Guide
-
-Recommended style guide: [`airbnb/css`](https://github.com/airbnb/css)
-
-## JavaScript
-
-Talk about code style, filenames and tests
-
-Recommended style guide: [`airbnb/javascript `](https://github.com/airbnb/javascript)
 
 ### Module approach
 
