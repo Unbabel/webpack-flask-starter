@@ -26,7 +26,7 @@
     "bower": "./node_modules/bower/bin/bower",
     "csscomb": "csscomb src/scss",
     "test": "jest --no-cache --coverage",
-    "dev": "node project/static/build/dev-server.js",
+    "dev": "node coolest_app/static/build/dev-server.js",
     "start": "npm run dev",
     "build": "node project/static/build/build.js",
     "lint": "eslint --ext .js,.vue project/static/src"
