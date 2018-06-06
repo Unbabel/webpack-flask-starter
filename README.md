@@ -99,7 +99,7 @@ In case you're curious regarding what each file does, here is a more detailed gu
 7. Add the contents of the `.gitignore` file to your `.gitignore` — we suggest not commiting the `/coolest_app/static/dist/` folder, as your deploy process should take care of the generating the final dist files, but remove that line if you need it
 8. Copy the `jest.config.js` file to `/` — this is the [Jest](https://facebook.github.io/jest/) config file, which includes minimum thresholds :)
 9. Copy the `/coolest_app/static/build/` folder to `/coolest_app/static/` — this is the config for building/serving
-10. (Optional) Copy the `/coolest_app/static/build/merged_files.js` file to `/coolest_app/static/build/` — if you need to merge non-module files into one (or more), also check the bottom of the `webpack.base.conf.js` file if that's the case
+10. (Optional) Copy the `/coolest_app/static/build/merged_files.js` file to `/coolest_app/static/build/` — if you need to concatenate non-module files or merge lots of files into a non-scoped one, use this and check the bottom of the `webpack.base.conf.js` file if that's the case
 11. Change the path on `/coolest_app/static/build/webpack.dev.conf.js:12` to match your project
 12. Add your entry files on `/coolest_app/static/build/webpack.base.conf.js:17` — the property name is the filename that you'll end up with, the string is the path
 13. Copy the `/coolest_app/static/config/` folder to `/coolest_app/static/`
