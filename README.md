@@ -96,7 +96,7 @@ In case you're curious regarding what each file does, here is a more detailed gu
 4. Copy the `.eslintrc.js` file to `/` — these are our [ESLint](https://eslint.org/) linter rules
 5. (If you need Bower) Copy the `.bowerrc` file to `/` — this is the [Bower](https://bower.io/) config, that places the bower_components inside your projects' static folder
 6. (If you need Bower) Copy the `bower.json` file to `/` and add your Bower dependencies
-7. Add the contents of the `.gitignore` file to your `.gitignore` — we suggest not commiting the `/coolest_app/static/dist/` folder, as your deploy process should take care of the generating the final dist files, but remove that line if you need it
+7. Add the contents of the `.gitignore` file to your `.gitignore` — the `/coolest_app/static/dist/` folder is here because your deploy process should take care of the generating the final dist files
 8. Copy the `jest.config.js` file to `/` — this is the [Jest](https://facebook.github.io/jest/) config file, which includes minimum thresholds :)
 9. Copy the `/coolest_app/static/build/` folder to `/coolest_app/static/` — this is the config for building/serving
 10. (Optional) Copy the `/coolest_app/static/build/merged_files.js` file to `/coolest_app/static/build/` — if you need to concatenate non-module files or merge lots of files into a non-scoped one, use this and check the bottom of the `webpack.base.conf.js` file if that's the case
