@@ -4,6 +4,14 @@
   "description": "Unbabel Starter for Front-end",
   "main": "project/static/build/build.js",
   "author": "João Sardinha",
+  "contributors": [
+    {
+      "name": "Sofia F. Rocha"
+    },
+    {
+      "name": "João Sardinha"
+    }
+  ],
   "license": "ISC",
   "repository": {
     "type": "git",
