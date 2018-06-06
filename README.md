@@ -37,7 +37,7 @@ We kept the folder structure as flexible as possible, with some quick find and r
 The `/coolest_app/static/` will be populated with a `dist` folder with the files ready to be served by Flask.
 
 ### Vue
-The `/coolest_app/static/vue/` folder has 2 folders:
+The `/coolest_app/static/src/vue/` folder has 2 folders:
 - `/apps/` — for _big-ish_ applications, that are used in one place
 - `/components/` — for vue components that are used in multiple places, the LoadingSpinner is a good example, as it might be used in a UserSettings.vue app _and_ in a UserSignup.vue app
 
