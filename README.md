@@ -78,7 +78,7 @@ Don't forget the `manifest.js`!
 ```
 
 ## Testing
-We are using Jest for all tests, with the help of the @vue/test-utils library to test Vue.js components more easily. There is an example file on the `/coolest_app/static/tests/unit/js/` folder, that is ready to test Vuex store, if you have that in your apps.
+We are using Jest for all tests, with the help of the @vue/test-utils library to test Vue.js components more easily. There is an example file on the `/coolest_app/static/tests/unit/specs/` folder, that is ready to test Vuex store, if you have that in your apps.
 
 ## Linting
 There is really no reason why you shouldn't lint your files: it prevents bugs, makes projects inside the same organization consistent and mantains the overall sanity of the other humans who look at your code.
