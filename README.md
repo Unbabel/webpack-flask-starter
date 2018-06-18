@@ -2,175 +2,106 @@
 
 [![CircleCI](https://circleci.com/gh/Unbabel/frontend-starter/tree/master.svg?style=svg&circle-token=97edd512a945d1412a5a0ff0ba51de509bd837db)](https://circleci.com/gh/Unbabel/frontend-starter/tree/master)
 
-Starting point front-end projects at Unbabel
+This repo's goal is to get your front-end buildsystems up and running faster. It's based on the [Vue.js Webpack boilerplate](https://github.com/vuejs-templates/webpack) and was modified to play nice with a Flask project.
 
-This repo aims to provide a simple starting point, using Gulp to run several tasks, for example compile SASS, JavaScript module approach, serve files using BrowserSync providing CSS injection and auto browser reloading.
+## Quick start
+1. Copy everything except this README
+2. Search for "coolest_app" and change it to match your project's name
+3. Add your entry points on the `webpack.base.config.js` file
+4. Edit the proxy table on the `config/index.js` file
+5. Edit the port number to match your project's (default is 5000)
+6. Run `npm run install`
 
-Read the [quickstart](#quickstart) instructions.
+If you want to know more about each file, there's more info [here](#files).
 
-## Tooling
+## Features:
+- Compiles Vue.js single file components
+- Processes .scss files
+- Is ready to test the frontend using Jest
+- Has a dev mode that launches a server with livereload
+- Has a production mode that compresses the files
+- Lints the .vue and .js files
+- Adds polyfills using Babel
 
-- **Gulp** - Run project tasks
-- **SASS** - CSS pre-processor (SCSS syntax)
-- **Autoprefixer** - Parse CSS and add vendor prefixes to rules using values from Can I Use.
-- **CleanCSS** - Optimize and minify CSS
-- **BrowserSync** - Serve static files, inject CSS changes and auto-reload browser when files change
-- **Webpack** - Transpiles ES6 code to ES5
-- **Jasmine** - Behavior-driven development framework for testing JavaScript code
+## Commands
+- `npm run install` to install the dependencies
+- `npm run bower` to run bower
+- `npm run test` to run the tests
+- `npm run dev` to launch a dev server with livereload
+- `npm run start` shortcut for `npm run dev`
+- `npm run build` to compile the assets for production
+- `npm run lint` to lint your files
 
-## Folder Structure
+## Folder structure
+We kept the folder structure as flexible as possible, with some quick find and replaces to fix the paths you should be able to move stuff around.
+The `/coolest_app/static/` will be populated with a `dist` folder with the files ready to be served by Flask.
 
-Describe the folder structure
+### Vue
+The `/coolest_app/static/src/vue/` folder has 2 folders:
+- `/apps/` — for _big-ish_ applications, that are used in one place
+- `/components/` — for vue components that are used in multiple places, the LoadingSpinner is a good example, as it might be used in a UserSettings.vue app _and_ in a UserSignup.vue app
 
-### Styles
+This separation might seem overkill, and it might be, depending on the size of your project, but you can always scale it down. This is the structure used on the Core.
 
-    scss/
-    |
-    |- base/
-    |   |- _all.scss
-    |   |- _base.scss
-    |   ...
-    |
-    |- components/
-    |   |- _all.scss
-    |   ...
-    |
-    |- typography/
-    |   |- _all.scss
-    |   |- _typography.less
-    |   ...
-    |
-    |- utils/
-    |   |- _all.scss
-    |   |- _grid.scss
-    |   ...
-    |
-    |- views/
-    |   |- _all.scss
-    |   ...
 
-**Description**
+#### Importing stuff on your .vue components
+You might need to import components from a UI Library, to do that you should add it to the `package.json`:
+```
+"@unbabel/ui": "git+ssh://git@gitlab.com/Unbabel/ui.git",
+```
 
-- `/base` - Global project styles. Usually affect the global feel of the project.
-- `/components` - Anything from buttons, forms, lists, cards, etc.
-- `/typography` - Typography related stuff. The overall typography of the project is defined here.
-- `/utils` - Useful pieces of css such grids, media query breakpoints, alignment stuff, clears, etc.
-- `/views` - Page/section specific styles.
-- `_dependencies.scss` - Import your external dependencies here.
-- `_settings.scss` - Contains variables used across the project.
-- `main.scss` - The main app file that imports everything else.
+And then import it on your Vue component using:
+```
+import { Modal, Button } from '@unbabel/ui';
+```
+for javascript, or for the styles:
+```
+@import '~@unbabel/ui/src/colors';
+```
 
-Each folder usually has a `_all.scss` file that imports all files within the folder.
 
-## CSS
+### Sass
+Inside the `/coolest_app/static/src/scss/` folder is a possible structure that scales nicely. Put the elements/components that you use frequently inside the `/components/`, add the base styles to the `/base/` folder and the page-specific styles to the `/views/`.
+For very small projects you can just compile the `/coolest_app/static/src/scss/all.scss` file and use that on all pages, but as soon as you get some complexity (for example if you have a user facing views and admin views), you probably should separate that, or compile each view .scss file.
 
-Talk about less and file naming conventions. Files starting with underscore
 
-### Style Guide
+### Linking to the assets
+You can use
+```
+<script type="text/javascript" src="{{ url_for('static', filename='dist/app.js') }}"></script>
+```
+to link to the dist files.
 
-Recommended style guide: [`airbnb/css`](https://github.com/airbnb/css)
+Don't forget the `manifest.js`!
+```
+<script type="text/javascript" src="{{ url_for('static', filename='dist/js/manifest.bundle.js') }}"></script>
+```
 
-## JavaScript
+## Testing
+We are using Jest for all tests, with the help of the @vue/test-utils library to test Vue.js components more easily. There is an example file on the `/coolest_app/static/tests/unit/specs/` folder, that is ready to test Vuex store, if you have that in your apps.
 
-Talk about code style, filenames and tests
+## Linting
+There is really no reason why you shouldn't lint your files: it prevents bugs, makes projects inside the same organization consistent and mantains the overall sanity of the other humans who look at your code.
 
-Recommended style guide: [`airbnb/javascript `](https://github.com/airbnb/javascript)
+We use a slightly modified version of [AirBnb's config](https://www.npmjs.com/package/eslint-config-airbnb-base), the biggest difference being the use of Tabs instead of Spaces.
+The livereload server that starts when you use `npm run dev` lints your files automatically and will show an annoying overlay if there are errors (and show the warnings on the console) that prevents you from seeing the page.
 
-### Module approach
+## Files
+In case you're curious regarding what each file does, here is a more detailed guide to getting this build system working.
+> Assuming `/` is your project's root folder, and your Flask app is inside the `/coolest_app`:
 
-Your project starts at `src/js/main.js`, you may write your code using ES6 modules and all is compiled using Webpack.
-
-### Unit Testing
-
-We use [`jasmine`](https://jasmine.github.io/2.0/introduction.html) to create unit tests.
-
-Create a file inside `spec/` named `[something].spec.js`, do your imports, write your validations and it's done.
-
-Execute `npm test` to run all tests.
-
-## Quickstart
-
-### Requirements
-
-- `npm` (included with node. v6.8.1 or higher) - [https://nodejs.org/en/](https://nodejs.org/en/)
-- `gulp-cli` (v1.2.2 or higher) - Run `npm install -g gulp-cli` to install. [http://gulpjs.com/](http://gulpjs.com/)
-
-### How to use
-
-To start using `cd` into the project folder, run `npm install`.
-
-Running `npm install` will install all dependencies and compile the assets once.
-
-It's a good idea to run `npm install` when changing branches to make sure everything is updated.
-
-You may run `npm install && gulp serve` to install all requirements and open the browser to see something working.
-
-**While developing**
-
-Run `gulp serve`. This will compile all assets once, launch browsersync in the browser. It then watches for css and javascript changes. When css changes, it gets injected. When JavaScript changes, the page reloads.
-
-## Generating production-ready assets
-
-Run `gulp --target=prod` to generate minified assets ready to production
-
-## Managing Front-end Dependencies using Bower
-
-`bower` is recommended to manage front-end dependencies. `bower` allows you to specify the directory where the dependencies will be installed. **This is important when working with a `flask` server, which stores all public assets inside `static`.**
-
-**Bower is bundled as a devDependency.** You can run it with the following command.
-	
-	// Install something and saving to dependencies list
-	$ npm run bower -- install -S normalize-css
-	
-	/*
-	Npm is running local bower for us without the need for a global install
-	Anything added after the first -- is sent directly to bower binary
-	Under the hood, npm is running the following: bower install -S normalize-css
-	*/
-
-Optionally you can install `bower` globally.
-
-**Example of how to install and include `normalize-css`**
-
-Run `npm run bower -- install -S normalize-css` to install [normalize-css](https://necolas.github.io/normalize.css/)
-
-Then add `@import 'bower_components/normalize-css/normalize';` to `src/scss/_dependencies.scss`
-
-## Adding Bootstrap
-
-**Bootstrap 4.0.0-alpha.6 is included by default.**
-
-Explanation on how to add **just for reference**
-
-Run `npm run bower -- install -S bootstrap@4.0.0-alpha.6`
-
-Add `@import 'bower_components/bootstrap/scss/bootstrap';` to `src/scss/_dependencies.scss`
-
-All bootstrap css elements are now available
-
-## Integrate with Flask Template Project
-
-[flask-template-project by andreffs18](https://github.com/andreffs18/flask-template-project)
-
-You need to change the following:
-
-1. Move `src` dir to `project/static/`
-2. Edit `gulpfile.js`, search for `rootDir` and change to `./project/static`
-3. Edit `webpack.config.js`, search for `node_modules` and change to `../../node_modules`
-4. Edit `.bowerrc`, search for `directory` and change to `./project/static/bower_components`
-
-**You also need to change BrowserSync options**
-
-In `gulpfile.js`, look for:
-
-	const browserSyncOptions = {
-	  server: {
-	    baseDir: `${rootDir}/`,
-	  },
-	};
-	
-And replace with
-
-	const browserSyncOptions = {
-	  proxy: 'localhost:5000'
-	};
+1. Copy the package.json file to `/` and edit it to match your project
+2. Copy the `.editorconfig` file to `/` — these are the settings for [EditorConfig](https://editorconfig.org/)
+3. Copy the `.babelrc` file to `/` — these are the settings for [Babel](https://babeljs.io/)
+4. Copy the `.eslintrc.js` file to `/` — these are our [ESLint](https://eslint.org/) linter rules
+5. (If you need Bower) Copy the `.bowerrc` file to `/` — this is the [Bower](https://bower.io/) config, that places the bower_components inside your projects' static folder
+6. (If you need Bower) Copy the `bower.json` file to `/` and add your Bower dependencies
+7. Add the contents of the `.gitignore` file to your `.gitignore` — the `/coolest_app/static/dist/` folder is here because your deploy process should take care of the generating the final dist files
+8. Copy the `jest.config.js` file to `/` — this is the [Jest](https://facebook.github.io/jest/) config file, which includes minimum thresholds :)
+9. Copy the `/coolest_app/static/build/` folder to `/coolest_app/static/` — this is the config for building/serving
+10. (Optional) Copy the `/coolest_app/static/build/merged_files.js` file to `/coolest_app/static/build/` — if you need to concatenate non-module files or merge lots of files into a non-scoped one, use this and check the bottom of the `webpack.base.conf.js` file if that's the case
+11. Change the path on `/coolest_app/static/build/webpack.dev.conf.js:12` to match your project
+12. Add your entry files on `/coolest_app/static/build/webpack.base.conf.js:17` — the property name is the filename that you'll end up with, the string is the path
+13. Copy the `/coolest_app/static/config/` folder to `/coolest_app/static/`
+14. Change the list of proxies on `/coolest_app/static/config/index.js` with your entries — this lets the dev server inject the styles on the page instead of using the dist css files
+15. Run `npm install` — this will install the dependencies, install the bower components and build all the files for production

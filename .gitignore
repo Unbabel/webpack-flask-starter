@@ -1,3 +1,4 @@
+# Front-end ignores
 /node_modules
-/bower_components
-/dist
+/coolest_app/static/dist
+/coolest_app/static/bower_components/
