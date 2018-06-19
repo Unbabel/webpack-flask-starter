@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title%}This is the homepage{% endblock %}
+
+{% block extraHead%}
+    <link rel="stylesheet" href="{{ url_for('static', filename='dist/css/basic.css') }}">
+{% endblock %}
+
+
+{% block body %}
+<div class="hello">
+   <h1>Hello?</h1>
+</div>
+
+<div class="app-mount">
+    <home-app></home-app>
+</div>
+
+<script src="{{ url_for('static', filename='dist/js/home.js') }}"></script>
+{% endblock %}

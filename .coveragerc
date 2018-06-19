@@ -1,0 +1,11 @@
+# .coveragerc to control coverage.py
+
+[run]
+omit =
+	*__init__.py
+	*migrations.py
+	config.py
+	manage.py
+	project/commands/*
+	project/*tests/*
+	test_*

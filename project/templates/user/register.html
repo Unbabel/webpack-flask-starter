@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title%}{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Create account</h1>
+    <br>
+
+    <form class="form-signup" role="form" method="post" action="">
+        {{ form.csrf_token }}
+
+        <div class="form-group {{ 'has-danger' if form.username.errors }}">
+            <label for="username" class="form-control-label">Username</label>
+
+            {% set username_class = ['form-control'] %}
+            {% do username_class.append('form-control-danger') if form.username.errors %}
+
+            {{ form.username(placeholder="username", class_=' '.join(username_class)) }}
+
+            {% if form.username.errors %}
+                {% for error in form.username.errors %}
+                    <small class="form-control-feedback">{{ error }}</small>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <div class="form-group {{ 'has-danger' if form.password.errors }}">
+            <label for="password" class="form-control-label">Password</label>
+
+            {% set password_class = ['form-control'] %}
+            {% do password_class.append('form-control-danger') if form.password.errors %}
+
+            {{ form.password(placeholder="password", class_=' '.join(password_class)) }}
+
+            {% if form.password.errors %}
+                {% for error in form.password.errors %}
+                    <small class="form-control-feedback">{{ error }}</small>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <div class="form-group {{ 'has-danger' if form.confirm_password.errors }}">
+            <label for="password" class="form-control-label">Password</label>
+
+            {% set confirm_password_class = ['form-control'] %}
+            {% do confirm_password_class.append('form-control-danger') if form.confirm_password.errors %}
+
+            {{ form.confirm_password(placeholder="confirm password", class_=' '.join(confirm_password_class)) }}
+
+            {% if form.confirm_password.errors %}
+                {% for error in form.confirm_password.errors %}
+                    <small class="form-control-feedback">{{ error }}</small>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <button class="btn btn-success" type="submit">Create Account</button>
+    </form>
+
+</div>
+
+{% endblock %}

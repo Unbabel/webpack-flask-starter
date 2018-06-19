@@ -1,0 +1,48 @@
+<div class="btn-group mb-3">
+    <a href="{{ url_for('admin.user_create') }}" class="btn btn-sm btn-primary">
+        <span class="glyphicon glyphicon-userr" aria-hidden="true"></span>&nbsp;Create New User
+    </a>
+</div>
+
+
+<p><strong>{{ users.total }} users available</strong></p>
+<table class="table table-striped table-hover">
+    <thead>
+        <th>#</th>
+        <th>Username</th>
+        <th></th>
+    </thead>
+    <tbody>
+        {% for user in users.items %}
+        <tr id="{{ user.id }}">
+            <td><a href="{{ url_for('admin.user_detail', user_id=user.id) }}">{{ user.id }}</a></td>
+            <td><a href="{{ url_for('admin.user_detail', user_id=user.id) }}">{{ user.username }}</a></td>
+            <td class="actions">
+                <a href="{{ url_for("admin.user_toggle", user_id=user.id, action="remove") }}" data-action="remove" class="btn btn-danger btn-sm">
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>&nbsp;Remove
+                </a>
+                <a href="{{ url_for("admin.user_toggle", user_id=user.id, action="is_admin") }}" data-action="remove" class="btn btn-info btn-sm">
+                    <span class="glyphicon glyphicon-king" aria-hidden="true"></span>&nbsp;Toggle {% if user.is_admin %}Off{% else %}On{% endif %} Admin
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<nav>
+    <ul class="pagination">
+        {% if users.has_prev %}
+            <li class="page-item"><a href="?user-page={{ users.prev_num }}#users" class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo; Previous</span></a></li>
+        {% endif %}
+
+        {% if users.has_next %}
+            <li class="page-item"><a href="?user-page={{ users.next_num }}#users" class="page-link" aria-label="Next"><span aria-hidden="true">Next &raquo;</span></a></li>
+        {% endif %}
+    </ul>
+</nav>
+
+{% block extrajs %}
+<script type="text/javascript">
+</script>
+{% endblock %}

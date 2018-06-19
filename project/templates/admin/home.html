@@ -1,0 +1,59 @@
+{% extends "admin/base.html" %}
+{% block title%}{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Admin Dashboard</h1>
+
+    <!-- Nav tabs -->
+    <ul id="admin-tabs" class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="nav-item"><a href="#users" class="nav-link active" aria-controls="users" role="tab" data-toggle="tab">Users</a></li>
+        <li role="presentation" class="nav-item"><a href="#other" class="nav-link" aria-controls="other" role="tab" data-toggle="tab">Other</a></li>
+        <li role="presentation" class="nav-item"><a href="#api" class="nav-link" aria-controls="api" role="tab" data-toggle="tab">API</a></li>
+    </ul>
+
+    {% macro load_gif(index) %}
+        {% with img=index %}
+            {% include "admin/under-development.html"%}
+        {% endwith %}
+    {% endmacro %}
+
+    <!-- Tab panes -->
+    <div class="tab-content pt-4">
+        <div role="tabpanel" class="tab-pane active" id="users">
+            {% include "admin/user/list.html" %}
+        </div>
+        <div role="tabpanel" class="tab-pane" id="other">
+            {{ load_gif(2) }}
+        </div>
+        <div role="tabpanel" class="tab-pane" id="api">
+            <legend>Available endpoints:</legend>
+            <ul>
+                {% for resource in resources %}
+                <li>{{ resource.1 }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block extrajs %}
+<script type="text/javascript">
+$('#admin-tabs a').click(function (e) {
+    e.preventDefault();
+    var action = $(this).attr('aria-controls');
+    console.info("Toggle \"" + $(this).text() + "\"");
+    // show tab
+    $(this).tab('show')
+});
+
+// Javascript to enable link to tab
+var url = document.location.toString();
+if (url.match('#')) {
+    $('#admin-tabs a[href="#' + url.split('#')[1] + '"]').tab('show');
+}
+
+</script>
+{% endblock %}
