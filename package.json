@@ -29,11 +29,13 @@
     "test": "jest --no-cache --coverage"
   },
   "dependencies": {
+    "jquery": "^3.3.1",
     "vue": "^2.5.16"
   },
   "devDependencies": {
     "@unbabel/ui": "git+ssh://git@gitlab.com/Unbabel/ui.git",
     "@vue/test-utils": "^1.0.0-beta.16",
+    "autoprefixer": "^8.6.3",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
     "babel-loader": "^7.1.4",
@@ -48,10 +50,12 @@
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.9.0",
+    "popper.js": "^1.14.3",
     "postcss-loader": "^2.1.5",
     "sass-loader": "^7.0.3",
     "vue-loader": "^15.2.4",
     "vue-style-loader": "^4.1.0",
+    "vue-template-compiler": "^2.5.16",
     "vuex": "^3.0.1",
     "webpack": "^4.12.0",
     "webpack-cli": "^3.0.3",

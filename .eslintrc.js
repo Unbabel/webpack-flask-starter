@@ -14,6 +14,7 @@ module.exports = {
     'globals': {
         'test': true,
         'expect': true,
-        'describe': true
+        'describe': true,
+        'window': true,
     }
 }

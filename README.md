@@ -89,7 +89,11 @@ We use a slightly modified version of [AirBnb's config](https://www.npmjs.com/pa
 
 ## Extras
 ### Bootstrap
-This project includes Bootstrap. To remove it, remove it from the `package.json` file and the import on the `all.scss` file.
+This project includes Bootstrap, which needs jQuery. To remove it:
+- run `npm uninstall -D bootstrap popper.js jquery`
+- remove the import on the `all.scss` file
+- remove the jquery imports on the `home.js` file
+
 
 ### Bower
 If you need Bower, add the `bower.json` file to the root of the project. The `.bowerrc` file sets the bower_components folder inside the `/static/` folder so it's easier to manage the automatic deploys

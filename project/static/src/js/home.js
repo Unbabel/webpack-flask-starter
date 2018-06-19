@@ -1,5 +1,8 @@
 import Vue from 'vue';
+import jQuery from 'jquery';
 import HomeApp from '../vue/apps/HomeApp.vue';
+
+window.jQuery = jQuery;
 
 console.log('hello home!');
 
