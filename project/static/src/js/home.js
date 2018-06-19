@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import HomeApp from '../vue/HomeApp.vue';
+import HomeApp from '../vue/apps/HomeApp.vue';
 
 console.log('hello home!');
 

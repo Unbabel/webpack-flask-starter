@@ -5,7 +5,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
 	entry: {
-		basic: './project/static/src/scss/styles.scss',
+		basic: './project/static/src/scss/all.scss',
 		// this home.js file needs to be in the template so hot reload works
 		'js/home': './project/static/src/js/home.js',
 	},
