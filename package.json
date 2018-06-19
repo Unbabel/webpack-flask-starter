@@ -26,7 +26,7 @@
     "build": "webpack --mode production",
     "dev": "webpack-dev-server --mode development",
     "lint": "eslint --ext .js,.vue src",
-    "test": "jest --no-cache --coverage",
+    "test": "jest --no-cache --coverage"
   },
   "dependencies": {
     "vue": "^2.5.16"
