@@ -1,4 +1,3 @@
-
 # Flask + Webpack Starter
 
 [![CircleCI](https://circleci.com/gh/Unbabel/frontend-starter/tree/master.svg?style=svg&circle-token=97edd512a945d1412a5a0ff0ba51de509bd837db)](https://circleci.com/gh/Unbabel/frontend-starter/tree/master)
@@ -8,12 +7,14 @@ This repo's goal is to get your project up and running faster. It uses Flask for
 
 ## Quick start
 1. Create a __.env__ file with these variables
+2. 
 ```
 APP_ENV=localhost
 SECRET_KEY=<SECRET_KEY>
 MONGO_DB=your_db_nam
 MONGO_DB_TEST=your_test_db_name
 ```
+
 3. Make a virtual env using `mkvirtualenv my-cool-project`
 4. Install the backend requirements using `pip install -r requirements.txt`
 5. Run the server using `python manage.py runserver`
