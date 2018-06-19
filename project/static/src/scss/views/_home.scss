@@ -1,6 +1,11 @@
 .page-home {
 	padding: 2rem 0;
 
+	img {
+		width: 100%;
+		height: auto;
+	}
+
 	&__grid {
 		padding: 1.5rem 0;
 	}
