@@ -6,8 +6,7 @@ This repo's goal is to get your project up and running faster. It uses Flask for
 
 
 ## Quick start
-1. Create a __.env__ file with these variables
-2. 
+After creating a __.env__ file with these variables:
 ```
 APP_ENV=localhost
 SECRET_KEY=<SECRET_KEY>
@@ -15,9 +14,9 @@ MONGO_DB=your_db_nam
 MONGO_DB_TEST=your_test_db_name
 ```
 
-3. Make a virtual env using `mkvirtualenv my-cool-project`
-4. Install the backend requirements using `pip install -r requirements.txt`
-5. Run the server using `python manage.py runserver`
+1. Make a virtual env using `mkvirtualenv my-cool-project`
+2. Install the backend requirements using `pip install -r requirements.txt`
+3. Run the server using `python manage.py runserver`
 
 On another terminal window:
 1. Install the frontend requirements using `npm install`
