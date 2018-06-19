@@ -1,0 +1,63 @@
+{% extends "admin/base.html" %}
+{% block title%}{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Create User</h1>
+
+    <form class="form-create" role="form" method="post" action=".">
+        {{ form.csrf_token }}
+
+        <div class="form-group {{ 'has-danger' if form.username.errors }}">
+            <label for="username" class="form-control-label">Username</label>
+
+            {% set username_class = ['form-control'] %}
+            {% do username_class.append('form-control-danger') if form.username.errors %}
+
+            {{ form.username(placeholder="username", class_=' '.join(username_class)) }}
+
+            {% if form.username.errors %}
+                {% for error in form.username.errors %}
+                    <small class="form-control-feedback">{{ error }}</small>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+
+        <div class="form-group {{ 'has-danger' if form.password.errors }}">
+            <label for="password" class="form-control-label">Password</label>
+
+            {% set password_class = ['form-control'] %}
+            {% do password_class.append('form-control-danger') if form.password.errors %}
+
+            {{ form.password(placeholder="password", class_=' '.join(password_class)) }}
+
+            {% if form.password.errors %}
+                {% for error in form.password.errors %}
+                    <small class="form-control-feedback">{{ error }}</small>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <div class="form-check {{ 'has-danger' if form.is_admin.errors }}">
+            <label class="form-check-label">
+                {{ form.is_admin(class_='form-check-input') }} {{ form.is_admin.label }}
+            </label>
+            {% if form.is_admin.errors %}
+                {% for error in form.is_admin.errors %}
+                    <small class="form-control-feedback">{{ error }}</small>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <button type="submit" class="btn btn-success">Create New User</button>
+    </form>
+
+</div>
+{% endblock %}
+
+
+{% block extrajs %}
+<script type="text/javascript">
+</script>
+{% endblock %}

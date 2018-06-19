@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title%}This is the homepage{% endblock %}
+
+{% block extraHead%}
+    <link rel="stylesheet" href="{{ url_for('static', filename='dist/css/basic.css') }}">
+{% endblock %}
+
+{% block bodyClass %}page-home{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Welcome!</h1>
+    <h4>This is a Flask+Vue.js+Webpack starter project</h4>
+
+    <div class="row page-home__grid">
+        <div class="col-3">
+            I wonder if...
+        </div>
+        <div class="col-3">
+            ..the grid...
+        </div>
+        <div class="col-3">
+            ...is working?
+        </div>
+        <div class="col-3">
+            <img src="{{ url_for('static', filename='img/poirot.png') }}" alt="World's greatest detective">
+        </div>
+    </div>
+
+    <div class="app-mount">
+        <home-app></home-app>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='dist/js/home.js') }}"></script>
+{% endblock %}

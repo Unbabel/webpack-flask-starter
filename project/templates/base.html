@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}Flask Template Project{% endblock %}</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        {% block extraHead %}{% endblock %}
+    </head>
+    <body class="{% block bodyClass %}{% endblock %}">
+        {% block body %}{% endblock %}
+
+        {% block extraJS %}{% endblock %}
+    </body>
+</html>
