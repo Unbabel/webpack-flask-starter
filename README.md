@@ -2,7 +2,8 @@
 
 [![CircleCI](https://circleci.com/gh/Unbabel/frontend-starter/tree/master.svg?style=svg&circle-token=97edd512a945d1412a5a0ff0ba51de509bd837db)](https://circleci.com/gh/Unbabel/frontend-starter/tree/master)
 
-This repo's goal is to get your project up and running faster. It uses Flask for the backend and Vue.js for the frontend, built with Webpack 4.
+This repo's goal is to get your project up and running faster. It uses Flask for the backend and Vue.js for the frontend, built with Webpack 4.   
+The backend flask structure and setup is [Andre's Flask template project](https://github.com/andreffs18/flask-template-project)
 
 
 ## Quick start
