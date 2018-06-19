@@ -78,7 +78,7 @@ to link to the dist files.
 
 
 ## Testing
-We are using Jest for all tests, with the help of the @vue/test-utils library to test Vue.js components more easily. There is an example file on the `/coolest_app/static/tests/unit/specs/` folder, that is ready to test Vuex store, if you have that in your apps.
+We are using Jest for all tests, with the help of the @vue/test-utils library to test Vue.js components more easily. There is an example file on the `/project/static/tests/specs/` folder, that is ready to test Vuex store, if you have that in your apps.
 
 
 ## Linting

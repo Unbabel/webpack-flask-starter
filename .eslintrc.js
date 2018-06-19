@@ -16,5 +16,6 @@ module.exports = {
         'expect': true,
         'describe': true,
         'window': true,
+        'beforeEach': true,
     }
 }

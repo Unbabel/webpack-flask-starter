@@ -1,6 +1,6 @@
 module.exports = {
 	verbose: false,
-	rootDir: './coolest_app/static',
+	rootDir: './project/static',
 	moduleFileExtensions: ['vue', 'js', 'jsx'],
 	moduleNameMapper: {
 		'^@/(.*)$': '<rootDir>src/$1',
