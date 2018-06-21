@@ -82,6 +82,8 @@ module.exports = {
 		watchContentBase: true,
 		// port where the dev server will start
 		port: 9001,
+		// only logs stuff on the console when there's an error or a new compilation
+		stats: 'minimal',
 		proxy: {
 			// all the requests that are not /static/dist/ files go to flask
 			// 5000 is the default port for flask
