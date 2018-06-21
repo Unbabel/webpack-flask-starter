@@ -9,7 +9,13 @@ module.exports = {
         "brace-style": ["error", "stroustrup"],
         "arrow-body-style": ["error", "always"],
         // allow debugger during development
-        'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
+        'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
+        'import/extensions': [
+            'error', 'always', {
+                'js': 'never',
+                'vue': 'never'
+            }
+        ]
     },
     'globals': {
         'test': true,
