@@ -5,9 +5,11 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
 	entry: {
-		basic: './project/static/src/scss/all.scss',
-		// this home.js file needs to be in the template so hot reload works
+		// all the files that you want to process or watch need to be here
+		// if this list gets too long, make a separate file and import it here
+		'css/basic': './project/static/src/scss/all.scss',
 		'js/home': './project/static/src/js/home.js',
+		'html/home': './project/templates/home.html',
 	},
 	output: {
 		path: path.resolve(__dirname, './project/static/dist'),
@@ -32,6 +34,8 @@ module.exports = {
 					loader: 'babel-loader',
 				},
 			},
+			// we don't actually do anything with this right now,
+			// it's just so the livereload works when changing the templates
 			{
 				test: /\.html$/,
 				use: [
@@ -76,8 +80,9 @@ module.exports = {
 		],
 	},
 	devServer: {
-		// path to the static folder in relation to this file
-		contentBase: path.join(__dirname, './project/static/'),
+		// path to the static (or its parent folder, if you want to watch the templates also)
+		// folder in relation to this file
+		contentBase: path.join(__dirname, './project/'),
 		// url to the folder used on the templates to get the static files
 		// example: /static/dist/file.css
 		publicPath: '/static/dist/',
@@ -101,9 +106,8 @@ module.exports = {
 		// inject: true,
 		// }),
 		new MiniCssExtractPlugin({
-			// set the folder where the css files will go
-			// the line below will cause /static/dist/css/basic.css
-			filename: 'css/[name].css',
+			// you can also put 'css/[name].css' to send the file to a /dist/css folder
+			filename: '[name].css',
 			chunkFilename: '[id].css',
 		}),
 		new VueLoaderPlugin(),
