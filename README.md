@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/Unbabel/frontend-starter/tree/master.svg?style=svg&circle-token=97edd512a945d1412a5a0ff0ba51de509bd837db)](https://circleci.com/gh/Unbabel/frontend-starter/tree/master)
 
-This repo's goal is to get your project up and running faster. It uses Flask for the backend and Vue.js for the frontend, built with Webpack 4.   
+This repo's goal is to get your project up and running faster. It uses Flask for the backend and Vue.js for the frontend, built with Webpack 4.
 The backend flask structure and setup is [Andre's Flask template project](https://github.com/andreffs18/flask-template-project)
 
 
@@ -49,7 +49,7 @@ The `/project/static/` will be populated with a `dist` folder with the files rea
 
 
 ### Vue
-The `/project/static/src/vue/` folder has 2 folders:
+The `/project/static/src/` folder has 2 relevant folders:
 - `/apps/` — for _big-ish_ applications, that are used in one place
 - `/components/` — for vue components that are used in multiple places, the LoadingSpinner is a good example, as it might be used in a UserSettings.vue app _and_ in a UserSignup.vue app
 
@@ -67,8 +67,8 @@ for javascript, or for the styles:
 ```
 
 ### Sass
-Inside the `/coolest_app/static/src/scss/` folder is a possible structure that scales nicely. Put the elements/components that you use frequently inside the `/components/`, add the base styles to the `/base/` folder and the page-specific styles to the `/views/`.
-For very small projects you can just compile the `/coolest_app/static/src/scss/all.scss` file and use that on all pages, but as soon as you get some complexity (for example if you have a user facing views and admin views), you probably should separate that, or compile each view .scss file.
+Inside the `/project/static/src/scss/` folder is a possible structure that scales nicely. Put the elements/components that you use frequently inside the `/components/`, add the base styles to the `/base/` folder and the page-specific styles to the `/views/`.
+For very small projects you can just compile the `/project/static/src/scss/all.scss` file and use that on all pages, but as soon as you get some complexity (for example if you have a user facing views and admin views), you probably should separate that, or compile each view .scss file.
 
 ### Linking to the assets
 You can use

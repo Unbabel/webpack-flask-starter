@@ -101,11 +101,6 @@ module.exports = {
 		},
 	},
 	plugins: [
-		// new HtmlWebPackPlugin({
-		// template: './src/index.html',
-		// filename: './index.html',
-		// inject: true,
-		// }),
 		new CopyWebpackPlugin([{
 			from: 'project/static/src/img',
 			to: '../dist/img',
