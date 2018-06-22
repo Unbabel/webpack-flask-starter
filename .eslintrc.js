@@ -15,7 +15,14 @@ module.exports = {
                 'js': 'never',
                 'vue': 'never'
             }
-        ]
+        ],
+    },
+    'settings': {
+        'import/resolver': {
+            'webpack': {
+                'config': 'webpack.config.js'
+            }
+        }
     },
     'globals': {
         'test': true,

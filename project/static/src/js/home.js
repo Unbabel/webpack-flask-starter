@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import jQuery from 'jquery';
-import HomeApp from '@Source/vue/apps/HomeApp';
+import HomeApp from '@/vue/apps/HomeApp';
 
 window.jQuery = jQuery;
 
