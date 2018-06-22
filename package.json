@@ -1,8 +1,8 @@
 {
-  "name": "unbabel-frontend-starter",
+  "name": "webpack-flask-starter",
   "version": "2.1.0",
-  "description": "Unbabel Starter for Front-end",
-  "main": "project/static/build/build.js",
+  "description": "Unbabel Starter for new projects",
+  "main": "webpack.config.js",
   "author": "João Sardinha",
   "contributors": [
     {
@@ -15,16 +15,16 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git@github.com:Unbabel/frontend-starter.git"
+    "url": "git@https://gitlab.com/Unbabel/webpack-flask-starter.git"
   },
   "bugs": {
-    "url": "https://github.com/Unbabel/frontend-starter/issues",
+    "url": "https://gitlab.com/Unbabel/webpack-flask-starter/issues",
     "email": "community@dev.unbabel.com"
   },
   "scripts": {
     "postinstall": "npm run build",
     "build": "webpack --mode production",
-    "dev": "webpack-dev-server --mode development",
+    "dev": "webpack-dev-server --hot --mode development",
     "lint": "eslint --ext .js,.vue src",
     "test": "jest --no-cache --coverage"
   },
