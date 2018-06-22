@@ -10,7 +10,7 @@ export default {
 	name: 'HomeApp',
 	data() {
 		return {
-			message: 'Are you cool?',
+			message: 'Are you the coolest?',
 		};
 	},
 };
