@@ -2,6 +2,7 @@ const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const WebpackShellPlugin = require('webpack-shell-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
@@ -110,6 +111,9 @@ module.exports = {
 			// you can also put 'css/[name].css' to send the file to a /dist/css folder
 			filename: '[name].css',
 			chunkFilename: '[id].css',
+		}),
+		new WebpackShellPlugin({
+			onBuildEnd: ['rm -rf project/static/dist/html && echo "deleted the dist/html folder"'],
 		}),
 		new VueLoaderPlugin(),
 	],
