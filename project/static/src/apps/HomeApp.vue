@@ -25,5 +25,3 @@ span {
 	text-decoration: underline;
 }
 </style>
-
-
