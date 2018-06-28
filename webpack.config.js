@@ -82,13 +82,10 @@ module.exports = {
 		],
 	},
 	devServer: {
-		// path to the static (or its parent folder, if you want to watch the templates also)
-		// folder in relation to this file
 		contentBase: path.join(__dirname, './project/'),
-		// url to the folder used on the templates to get the static files
+		// url used on the templates to get the static files
 		// example: /static/dist/file.css
 		publicPath: '/static/dist/',
-		watchContentBase: true,
 		// port where the dev server will start
 		port: 9001,
 		// only logs stuff on the console when there's an error or a new compilation
@@ -113,7 +110,8 @@ module.exports = {
 			chunkFilename: '[id].css',
 		}),
 		new WebpackShellPlugin({
-			onBuildEnd: ['rm -rf project/static/dist/html && echo "deleted the dist/html folder"'],
+			// removes the /dist/html/ folder (that is not being used) after building
+			onBuildEnd: ['rm -rf project/static/dist/html && echo "Removed the /dist/html/ folder"'],
 		}),
 		new VueLoaderPlugin(),
 	],
