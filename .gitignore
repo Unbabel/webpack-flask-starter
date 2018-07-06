@@ -72,3 +72,6 @@ target/
 
 #Ipython Notebook
 .ipynb_checkpoints
+
+#Front-End stuff
+node_modules/
