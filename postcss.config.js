@@ -1,4 +1,9 @@
 module.exports = {
 	// eslint-disable-next-line
-	plugins: [require('autoprefixer')],
+	plugins: [
+		require('autoprefixer'),
+		require('cssnano')({
+			preset: 'default',
+		}),
+	],
 };
