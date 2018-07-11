@@ -4,8 +4,8 @@ const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WebpackShellPlugin = require('webpack-shell-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const prod = process.env.NODE_ENV === 'production';
 
@@ -27,16 +27,16 @@ module.exports = {
 		},
 		extensions: ['.js', '.vue'],
 	},
-	devtool: prod ? "none" : "source-map",
+	devtool: prod ? 'none' : 'source-map',
 	optimization: {
 		minimizer: [
 			new UglifyJsPlugin({
 				cache: true,
 				parallel: true,
-				sourceMap: !prod
+				sourceMap: !prod,
 			}),
-			new OptimizeCSSAssetsPlugin({})
-		]
+			new OptimizeCSSAssetsPlugin({}),
+		],
 	},
 	module: {
 		rules: [
