@@ -90,7 +90,14 @@ module.exports = {
 				test: /\.(png|svg|jpg|gif)$/,
 				use: [
 					{
-						loader: 'file-loader',
+						loader: 'url-loader',
+						options: {
+							name: '/static/src/img/[name].[ext]',
+							limit: 10000,
+						},
+					},
+					{
+						loader: 'img-loader',
 					},
 				],
 			},
