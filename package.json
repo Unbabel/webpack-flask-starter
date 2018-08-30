@@ -37,7 +37,7 @@
     "vue": "^2.5.16"
   },
   "devDependencies": {
-    "@unbabel/ui": "git+https://gitlab.com/Unbabel/ui.git",
+    "@unbabel/ui": "git+https://github.com/Unbabel/ui.git",
     "@vue/test-utils": "^1.0.0-beta.20",
     "autoprefixer": "^8.6.5",
     "babel-core": "^6.26.3",
