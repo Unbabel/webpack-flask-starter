@@ -23,8 +23,6 @@
   },
   "scripts": {
     "postinstall": "npm run build",
-    "precommit": "npm run clean-js",
-    "prepush": "npm run lint && pipenv run python manage.py test",
     "build": "NODE_ENV=production webpack --mode production && npm run clean-js",
     "dev": "NODE_ENV=development webpack-dev-server --hot --mode development",
     "clean-js": "rimraf project/static/dist/css/*.js",
