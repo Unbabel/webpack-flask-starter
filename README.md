@@ -6,7 +6,10 @@ It uses Flask for the backend and Vue.js for the frontend, built with Webpack 4.
 > The backend flask structure and setup is [André's Flask template project](https://github.com/andreffs18/flask-template-project), thank you André! 😁
 
 
-## Quick start
+## Getting started
+
+To run this project, make sure you have [Docker](https://www.docker.com/products/docker-desktop) installed and running.
+
 After creating a __.env__ file with these variables:
 ```
 APP_ENV=localhost
@@ -15,21 +18,39 @@ MONGO_DB=your_db_nam
 MONGO_DB_TEST=your_test_db_name
 ```
 
-Run this in you favourite shell:
+Then, run the following command:
 
-```bash
-$ mkvirtualenv my-cool-project
-$ pip install -r requirements.txt
-$ python manage.py runserver
+```shell
+docker-compose build;
+docker-compose run client npm i;
+docker-compose up;
 ```
 
-This creates a virtualenv to install the backend requirements and starts the Flask server. On another shell, run:
+This will prepare the containers, install the dependencies, and then run the containers.
 
-```bash
-$ npm install
+Ask someone from the dev team for the `.env` file.
+
+By default, the Flask server runs on port `5005` and the WebPack server runs on `7001`.
+
+Visit [http://localhost:7001/](http://localhost:7001/) and you should see the pages list.
+
+If these ports are an issue for you, feel free to change the `docker-compose.yml` file to expose different ports. You only need to touch the `published` ports.
+
+## Installing front-end dependencies using `npm`
+
+To run any `npm` commands inside the container, prefix any npm command with
+
+```shell
+$ docker-compose run dev_client <npm-command>
 ```
 
-This will install the frontend dependencies and build all the static assets.
+Example: Installing [Unbabel UI Library](https://gitlab.com/Unbabel/ui)
+
+```shell
+$ docker-compose run dev_client npm i @unbabel/ui
+```
+
+This will run `npm` inside the container and save any `package-lock.json` changes back to the repo
 
 
 ## Frontend
@@ -44,11 +65,14 @@ This will install the frontend dependencies and build all the static assets.
 
 
 ### Commands
-- `npm run install` to install the dependencies
-- `npm run dev` to launch a dev server with livereload
-- `npm run build` to compile the assets for production
-- `npm run lint` to lint your files
-- `npm run test` to run the tests
+- `docker-compose run client npm run install` to install the dependencies
+- `docker-compose run client npm run build` to compile the assets for production
+- `docker-compose run client npm run lint` to lint your files
+- `docker-compose run client npm run test` to run the tests
+
+The dev server is launched by composer automatically
+
+- `docker-compose run client npm run dev` to launch a dev server with livereload
 
 
 ### Folder structure

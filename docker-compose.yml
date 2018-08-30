@@ -1,0 +1,39 @@
+---
+
+version: "3.6"
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - APP_ENV=localhost
+      - SECRET_KEY=<SECRET_KEY>
+      - MONGO_DB=your_db_nam
+      - MONGO_DB_TEST=your_test_db_name
+    # env_file:
+    #   - .env
+    ports:
+      - target: 8080
+        published: 5005
+        protocol: tcp
+        mode: host
+    volumes:
+      - ./:/srv/unbabel
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    environment:
+      - DEVELOPMENT_HOST_PORT=localhost:7001
+    # env_file:
+    #   - .env
+    links:
+      - server
+    ports:
+      - target: 8081
+        published: 7001
+        protocol: tcp
+        mode: host
+    volumes:
+      - ./:/srv/unbabel
