@@ -1,6 +1,4 @@
 const path = require('path');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WebpackShellPlugin = require('webpack-shell-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
@@ -122,11 +120,6 @@ module.exports = {
 		},
 	},
 	plugins: [
-		// new CopyWebpackPlugin([{
-		// 	from: 'project/static/src/img',
-		// 	to: '../dist/img',
-		// }]),
-		// new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
 		new MiniCssExtractPlugin({
 			// you can also put 'css/[name].css' to send the file to a /dist/css folder
 			filename: 'css/[name].css',
