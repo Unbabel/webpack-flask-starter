@@ -13,7 +13,6 @@ diff-match-patch==20110725.1
 Flask==0.12.2
 Flask-Bcrypt==0.7.1
 Flask-DebugToolbar==0.10.0
-Flask-DotEnv==0.0.5
 Flask-Login==0.3.2
 flask-mongoengine==0.7.5
 Flask-RESTful==0.3.5

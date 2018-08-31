@@ -6,14 +6,9 @@ from flask import Flask
 
 
 def read_env(app, config_class):
-    """config environment variables and override with .env declared ones.
+    """config environment variables
     use configuration given by environment variable APP_ENV if "config_class"
     is not given"""
-    from flask_dotenv import DotEnv
-    env = DotEnv()
-    env.init_app(app)
-    # get all new .env variable and add them to os.environ dict
-    os.environ.update([(x[0], str(x[1])) for x in list(app.config.items())])
     # get correct APP_ENV and right variable
     if config_class is None:
         from config import config as c
