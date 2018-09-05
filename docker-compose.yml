@@ -13,7 +13,7 @@ services:
       - MONGO_DB_TEST=your_test_db_name
     # env_file:
     #   - .env
-    entrypoint:
+    command:
       - newrelic-admin
       - run-program
       - uwsgi
