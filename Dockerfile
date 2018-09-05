@@ -16,7 +16,7 @@ COPY .babelrc jest.config.js postcss.config.js webpack.config.js ./
 RUN APP_ENV=production npm run build
 
 # Final python image
-FROM python:2.7
+FROM python:3.7
 
 WORKDIR /srv/unbabel
 
