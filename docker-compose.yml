@@ -13,6 +13,13 @@ services:
       - MONGO_DB_TEST=your_test_db_name
     # env_file:
     #   - .env
+    entrypoint:
+      - newrelic-admin
+      - run-program
+      - uwsgi
+      - --ini
+      - uwsgi.ini
+      - --py-autoreload=1
     ports:
       - target: 8080
         published: 5005
