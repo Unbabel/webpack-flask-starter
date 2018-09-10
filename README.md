@@ -36,7 +36,19 @@ Visit [http://localhost:7001/](http://localhost:7001/) and you should see the pa
 
 If these ports are an issue for you, feel free to change the `docker-compose.yml` file to expose different ports. You only need to touch the `published` ports.
 
-## Installing front-end dependencies using `npm`
+## Flask Server
+
+### Running commands inside server
+
+Enter python shell
+
+```shell
+docker-compose run server python manage.py shell
+```
+
+## Frontend
+
+### Installing front-end dependencies using `npm`
 
 To run any `npm` commands inside the container, prefix any npm command with
 
@@ -52,8 +64,6 @@ $ docker-compose run dev_client npm i @unbabel/ui
 
 This will run `npm` inside the container and save any `package-lock.json` changes back to the repo
 
-
-## Frontend
 ### Features
 - Compiles Vue.js single file components
 - Processes .scss files
