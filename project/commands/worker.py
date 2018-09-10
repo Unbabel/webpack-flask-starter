@@ -4,7 +4,7 @@
 
 from flask import current_app as app
 from flask_script import Command
-from flask_rq import get_worker
+from flask_rq2 import RQ
 
 
 class WorkerCommand(Command):
@@ -12,9 +12,10 @@ class WorkerCommand(Command):
 
     def __init__(self):
         super(WorkerCommand, self).__init__()
+        self.rq = RQ()
 
     def run(self, **kwargs):
         app.logger.info("Running {} with arguments {}".format(
             self.__class__.__name__, kwargs))
         self.__dict__.update(**kwargs)  # update self's with kwargs
-        get_worker().work()
+        self.rq.get_worker().work()

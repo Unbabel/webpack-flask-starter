@@ -23,8 +23,6 @@
   },
   "scripts": {
     "postinstall": "npm run build",
-    "precommit": "npm run clean-js",
-    "prepush": "npm run lint && pipenv run python manage.py test",
     "build": "NODE_ENV=production webpack --mode production && npm run clean-js",
     "dev": "NODE_ENV=development webpack-dev-server --hot --mode development",
     "clean-js": "rimraf project/static/dist/css/*.js",
@@ -37,7 +35,7 @@
     "vue": "^2.5.16"
   },
   "devDependencies": {
-    "@unbabel/ui": "git+https://gitlab.com/Unbabel/ui.git",
+    "@unbabel/ui": "git+https://github.com/Unbabel/ui.git",
     "@vue/test-utils": "^1.0.0-beta.20",
     "autoprefixer": "^8.6.5",
     "babel-core": "^6.26.3",

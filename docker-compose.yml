@@ -1,0 +1,42 @@
+---
+
+version: "3.6"
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - APP_ENV=localhost
+      - SECRET_KEY=<SECRET_KEY>
+      - MONGO_DB=your_db_nam
+      - MONGO_DB_TEST=your_test_db_name
+    # env_file:
+    #   - .env
+    command:
+      - newrelic-admin
+      - run-program
+      - uwsgi
+      - --ini
+      - uwsgi.ini
+      - --py-autoreload=1
+    ports:
+      # HOST:CONTAINER
+      - "5005:8080"
+    volumes:
+      - ./:/srv/unbabel
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    environment:
+      - DEVELOPMENT_HOST_PORT=localhost:7001
+    # env_file:
+    #   - .env
+    links:
+      - server
+    ports:
+    # HOST:CONTAINER
+    - "7001:8081"
+    volumes:
+      - ./:/srv/unbabel
