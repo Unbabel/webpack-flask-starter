@@ -21,10 +21,8 @@ services:
       - uwsgi.ini
       - --py-autoreload=1
     ports:
-      - target: 8080
-        published: 5005
-        protocol: tcp
-        mode: host
+      # HOST:CONTAINER
+      - "5005:8080"
     volumes:
       - ./:/srv/unbabel
   client:
@@ -38,9 +36,7 @@ services:
     links:
       - server
     ports:
-      - target: 8081
-        published: 7001
-        protocol: tcp
-        mode: host
+    # HOST:CONTAINER
+    - "7001:8081"
     volumes:
       - ./:/srv/unbabel
