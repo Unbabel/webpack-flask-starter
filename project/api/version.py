@@ -12,7 +12,7 @@ class Version(Resource):
     """Version of API"""
 
     @staticmethod
-    def get(self):
+    def get():
         """Shows version of app """
         from manage import __version__
         return {
