@@ -16,7 +16,7 @@ COPY .babelrc jest.config.js postcss.config.js webpack.config.js ./
 RUN APP_ENV=production npm run build
 
 # Final python image
-FROM python:3.7
+FROM python:3.6
 
 WORKDIR /srv/unbabel
 
@@ -24,8 +24,7 @@ WORKDIR /srv/unbabel
 COPY requirements.txt .
 
 # Install python dependencies
-RUN pip install --no-cache-dir newrelic uwsgi && \
-    pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY config.py manage.py uwsgi.ini ./
 COPY project project

@@ -4,7 +4,7 @@
 
 from flask import current_app as app
 from flask_script import Command
-from flask_rq import get_worker
+from flask_rq2 import get_worker
 
 
 class WorkerCommand(Command):

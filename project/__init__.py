@@ -47,7 +47,7 @@ def create_app(config=None):
     from flask_debugtoolbar import DebugToolbarExtension
     from flask_mongoengine import MongoEngine
     from flask_bcrypt import Bcrypt
-    from flask_rq import RQ
+    from flask_rq2 import RQ
     from flask_restful import Api
     from flask_login import LoginManager
 
