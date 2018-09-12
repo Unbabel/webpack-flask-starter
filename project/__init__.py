@@ -12,7 +12,7 @@ def read_env(app, config_class):
     # get correct APP_ENV and right variable
     if config_class is None:
         from config import config as c
-        config_class = c.get(app.config.get('APP_ENV'))
+        config_class = c.get(app.config.get('ENV'))
     app.config.from_object(config_class)
     return app
 
@@ -21,6 +21,8 @@ def create_app(config=None):
     app = Flask(__name__)
     # read .envs and configuration class
     app = read_env(app, config)
+
+    app.secret_key = app.config.get('SECRET_KEY')
 
     # define logging patterns
     import logging  # %(pathname)
