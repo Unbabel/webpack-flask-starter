@@ -28,7 +28,7 @@
     "lint-fix": "eslint project/static/js --ext .js,.vue --fix",
     "test": "jest --no-cache --coverage",
     "build": "webpack --env.mode production && npm run clean-js",
-    "dev": "webpack-dev-server --hot --env.mode development",
+    "dev": "webpack-dev-server --hot --env.mode development"
   },
   "dependencies": {
     "jquery": "^3.3.1",
