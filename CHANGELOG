@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [[v2.0.1](https://gitlab.com/Unbabel/ui/compare/v2.0.0...v2.0.1)] - 2018-09-26
+### Changed
+- Split Webpack configs between development and production
+
 ## [[v2.0.0](https://gitlab.com/Unbabel/ui/compare/v1.1.1...v2.0.0)] - 2018-06-28
 ### Changed
 - Upgrade Webpack to version 4 and simplify the config files
