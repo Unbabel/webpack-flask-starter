@@ -1,6 +1,6 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 // import Vuex from 'vuex';
-import HomeApp from '../../vue/apps/HomeApp.vue';
+import HomeApp from '../../apps/HomeApp.vue';
 
 const localVue = createLocalVue();
 // localVue.use(Vuex);
