@@ -8,15 +8,15 @@ root = true
 end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
-indent_style = space
+indent_style = tab
 indent_size = 2
 
 # Set default charset
-[*.{css,less,js,html}]
+[*.{css,less,js,html,scss}]
 charset = utf-8
 
 # JavaScript files
-[*.{js,json}]
+[*.{js,json,vue,scss}]
 indent_style = tab
 
 [*.{html}]
