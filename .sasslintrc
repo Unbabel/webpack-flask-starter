@@ -1,0 +1,10 @@
+{
+	"rules": {
+		"indentation": [
+			2, {
+				"size": "tab"
+			}
+		],
+		"zero-unit": true
+	}
+}
