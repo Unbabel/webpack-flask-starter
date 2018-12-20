@@ -24,8 +24,8 @@
   "scripts": {
     "postinstall": "npm run build",
     "clean-js": "rimraf project/static/dist/css/*.js",
-    "lint": "eslint project/static/js --ext .js,.vue",
-    "lint-fix": "eslint project/static/js --ext .js,.vue --fix",
+    "lint": "eslint project/static/src --ext .js,.vue && stylelint project/static/src --config stylelint.config.js",
+    "lint-fix": "eslint project/static/src --ext .js,.vue --fix && stylelint project/**/*.scss project/**/*.vue --config stylelint.config.js --fix",
     "test": "jest --no-cache --coverage",
     "build": "webpack --env.mode production && npm run clean-js",
     "dev": "webpack-dev-server --hot --env.mode development"
@@ -67,6 +67,7 @@
     "postcss-loader": "^2.1.6",
     "rimraf": "^2.6.2",
     "sass-loader": "^7.0.3",
+    "stylelint": "^9.9.0",
     "stylelint-config-standard": "^18.2.0",
     "uglifyjs-webpack-plugin": "^1.2.7",
     "vue-eslint-parser": "^2.0.3",
