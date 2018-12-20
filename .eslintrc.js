@@ -1,7 +1,10 @@
 // https://eslint.org/docs/user-guide/configuring
 
 module.exports = {
-    extends: 'airbnb-base',
+    extends: [
+        'plugin:vue/recommended',
+        'airbnb-base'
+    ],
     'plugins': [
         'vue',
     ],
@@ -23,6 +26,7 @@ module.exports = {
                 'vue': 'never'
             }
         ],
+        'vue/html-indent': ['error', 'tab'],
     },
     'settings': {
         'import/resolver': {
@@ -37,5 +41,9 @@ module.exports = {
         'describe': true,
         'window': true,
         'beforeEach': true,
+        'history': true,
+        'document': true,
+        'jest': true,
+        'it': true,
     },
 }
