@@ -65,9 +65,9 @@
     "optimize-css-assets-webpack-plugin": "^4.0.3",
     "popper.js": "^1.14.3",
     "postcss-loader": "^2.1.6",
-    "sass-lint": "^1.12.1",
     "rimraf": "^2.6.2",
     "sass-loader": "^7.0.3",
+    "stylelint-config-standard": "^18.2.0",
     "uglifyjs-webpack-plugin": "^1.2.7",
     "vue-eslint-parser": "^2.0.3",
     "vue-jest": "^2.6.0",
@@ -84,6 +84,5 @@
   },
   "browserslist": [
     "last 2 versions"
-  ],
-  "sasslintConfig": ".sasslintrc"
+  ]
 }

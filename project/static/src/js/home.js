@@ -1,9 +1,10 @@
 import Vue from 'vue';
 import jQuery from 'jquery';
-import HomeApp from '@/apps/HomeApp';
+import HomeApp from '@/apps/HomeApp.vue';
 
 window.jQuery = jQuery;
 
+// eslint-disable-next-line
 console.log('hello home!');
 
 const app = new Vue({

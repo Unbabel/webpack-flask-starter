@@ -23,9 +23,11 @@ export default {
 	margin-top: 2rem;
 	font-size: 0.7rem;
 }
+
 span {
 	text-decoration: underline;
 }
+
 .detective {
 	margin-top: 1rem;
 	width: 100%;
