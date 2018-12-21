@@ -24,7 +24,7 @@
   "scripts": {
     "postinstall": "npm run build",
     "clean-js": "rimraf project/static/dist/css/*.js",
-    "lint": "eslint project/static/src --ext .js,.vue && stylelint project/static/src --config stylelint.config.js",
+    "lint": "eslint project/static/src --ext .js,.vue && stylelint project/**/*.scss project/**/*.vue --config stylelint.config.js",
     "lint-fix": "eslint project/static/src --ext .js,.vue --fix && stylelint project/**/*.scss project/**/*.vue --config stylelint.config.js --fix",
     "test": "jest --no-cache --coverage",
     "build": "webpack --env.mode production && npm run clean-js",
